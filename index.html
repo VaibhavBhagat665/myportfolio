@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vaibhav Bhagat - Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'background-dark': '#0D1117',
+            'background-light': '#161B22',
+            'card-dark': '#1A202C',      
+            'border-dark': '#30363D',   
+            'text-primary': '#E6EDF3', 
+            'text-secondary': '#B0BAC6', 
+            'accent-teal': '#14b8a6',    
+            'accent-purple': '#8b5cf6',  
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Montserrat', 'sans-serif'], 
+          },
+          animation: {
+            'subtle-bob': 'subtle-bob 2s ease-in-out infinite',
+          },
+          keyframes: {
+            'subtle-bob': {
+              '0%, 100%': { transform: 'translateY(-4px)' },
+              '50%': { transform: 'translateY(4px)' },
+            }
+          }
+        }
+      },
+      plugins: [
+        require('@tailwindcss/forms'), // If needed for better form styling
+        require('tailwind-scrollbar'), // If using this plugin
+      ],
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0D1117; /* background-dark */
+      color: #E6EDF3; /* text-primary */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    /* Custom scrollbar for a more integrated look */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #161B22; /* background-light */
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #30363D; /* border-dark */
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #8b5cf6; /* accent-purple */
+    }
+    /* For Firefox */
+    html {
+      scrollbar-width: thin;
+      scrollbar-color: #30363D #161B22; /* thumb track */
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "framer-motion": "https://esm.sh/framer-motion@^12.18.1",
+    "@google/genai": "https://esm.sh/@google/genai@^0.18.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
