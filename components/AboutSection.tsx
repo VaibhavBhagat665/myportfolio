@@ -56,7 +56,7 @@ const AboutSection: React.FC<{ id: string }> = ({ id }) => {
               className="text-text-secondary leading-relaxed"
               variants={textVariants}
             >
-              Currently, I'm diving deep into <span className="text-accent-teal font-semibold">React.js</span>, exploring the fascinating world of <span className="text-accent-purple font-semibold">Deep Learning</span>, and honing my skills in <span className="text-accent-teal font-semibold">modern Web Development</span> practices. I'm always excited to learn new technologies and apply them to create meaningful projects.
+              Currently, I'm diving deep into <span className="text-accent-teal font-semibold">GenAI</span>, exploring the fascinating world of <span className="text-accent-purple font-semibold">Deep Learning</span>, and honing my skills in <span className="text-accent-teal font-semibold">modern Development</span> practices. I'm always excited to learn new technologies and apply them to create meaningful projects.
             </motion.p>
           </motion.div>
         </div>

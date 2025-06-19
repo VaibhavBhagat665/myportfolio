@@ -384,7 +384,7 @@ const AIChatbot: React.FC = () => {
                       value={inputValue}
                       onChange={(e) => setInputValue(e.target.value)}
                       placeholder={!apiKey && !chatSessionRef.current ? "Chatbot unavailable..." : "Ask about Vaibhav..."}
-                      className="w-full bg-background-light/50 border border-white/20 text-text-primary rounded-xl p-3 text-sm focus:ring-2 focus:ring-accent-teal focus:border-transparent transition-all duration-300 disabled:opacity-50 backdrop-blur-sm placeholder-text-secondary/60"
+                      className="w-full bg-background-light/50 border border-white/20 text-black rounded-xl p-3 text-sm focus:ring-2 focus:ring-accent-teal focus:border-transparent transition-all duration-300 disabled:opacity-50 backdrop-blur-sm placeholder-text-secondary/60"
                       disabled={isLoading || (!apiKey && !chatSessionRef.current)}
                       aria-label="Chat input"
                     />

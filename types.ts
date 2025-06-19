@@ -11,7 +11,7 @@ export interface SocialLink {
 }
 
 export enum SkillCategory {
-  FRONTEND = 'Frontend Development',
+  FRONTEND = 'Development',
   AIML = 'AI/Machine Learning',
   TOOLS = 'Tools & Platforms',
   LANGUAGES = 'Programming Languages',
