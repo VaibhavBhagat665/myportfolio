@@ -23,6 +23,6 @@ export const USER_INFO = {
   name: "Vaibhav Bhagat",
   role: "B.Tech IT Student @ IIIT Sonepat (1st Year)",
   aspirations: "Aspiring AI/ML Engineer & Full-Stack Developer",
-  avatar: "https://i.ibb.co/PZ38wc5K/portpic.jpg", // Placeholder avatar
+  avatar: "https://iili.io/ForJw41.jpg", // Placeholder avatar
   bio: "I am a passionate and driven first-year B.Tech student in Information Technology at IIIT Sonepat. With a keen interest in Artificial Intelligence, Machine Learning, and Full-Stack Development, I am dedicated to building innovative solutions and continuously expanding my technical horizons. I thrive on challenges and am eager to contribute to the next generation of technology.",
 };
