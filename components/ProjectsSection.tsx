@@ -169,7 +169,7 @@ const ProjectCard: React.FC<{
           
           {/* Description with reveal animation */}
           <motion.p 
-            className="text-text-secondary text-sm mb-4 line-clamp-2 relative z-10"
+            className="text-0.25xl lg:text-0.5xl text-text-secondary text-sm mb-4 line-clamp-2 relative z-10"
             style={{ translateZ: 15 }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -590,7 +590,7 @@ const ProjectStoryCard: React.FC<{
             
             {/* Enhanced description */}
             <motion.p 
-              className="text-0.5xl lg:text-1xl text-text-secondary text-lg leading-relaxed mb-8 relative z-10"
+              className="text-0.25xl lg:text-0.5xl text-text-secondary text-lg leading-relaxed mb-8 relative z-10"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
