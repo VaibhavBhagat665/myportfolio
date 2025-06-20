@@ -7,7 +7,7 @@ export const projectsData: Project[] = [
     title: 'Talevo - Interactive Storytelling WebApp',
     description: '\nBuilt Talevo, a web platform for reading and exploring interactive, choice-driven stories. Features immersive visuals and replayable story paths. Developed for experimentation in UI/UX design, storytelling logic, and dynamic user interaction.',
     stack: ['HTML', 'CSS', 'JavaScript', 'Firebase','Firestore'],
-    imageUrl: 'https://picsum.photos/seed/mlclassifier/600/400',
+    imageUrl: 'https://iili.io/3QjTfpf.png',
     githubUrl: 'https://github.com/VaibhavBhagat665/talevo-2',
     demoUrl: 'https://talevo-2.vercel.app',
     year: 2024,
@@ -18,7 +18,7 @@ export const projectsData: Project[] = [
     description: '\nBuilt a full-stack web app for college mental health support during my first hackathon. MindSetu features role-based dashboards for students, teachers, and admins; mood tracking; assignment insights; faculty interventions; AI chatbot support; and strict data privacy.',
     stack: ['React', 'Tailwind CSS', 'TypeScript', 'Express', 'Node.js', 'Firebase'],
     imageUrl: 'https://picsum.photos/seed/webscraper/600/400',
-    githubUrl: '#', // Placeholder
+    demobUrl: 'https://mindsetu-b0db5.web.app/', 
     year: 2023,
   },
   {
