@@ -574,7 +574,7 @@ const ProjectStoryCard: React.FC<{
 
             {/* Enhanced title with typing animation */}
             <motion.h2 
-              className={`text-0.5xl lg:text-1xl font-display font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r ${currentTheme.accent} relative`}
+              className={`text-2xl lg:text-3xl font-display font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r ${currentTheme.accent} relative`}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, type: "spring" }}
@@ -590,7 +590,7 @@ const ProjectStoryCard: React.FC<{
             
             {/* Enhanced description */}
             <motion.p 
-              className="text-text-secondary text-lg leading-relaxed mb-8 relative z-10"
+              className="text-0.5xl lg:text-1xl text-text-secondary text-lg leading-relaxed mb-8 relative z-10"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
