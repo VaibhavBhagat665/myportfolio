@@ -3,32 +3,31 @@ import { Project } from '../types';
 
 export const projectsData: Project[] = [
   {
+    id: 'talevo',
+    title: 'Talevo - Interactive Storytelling WebApp',
+    description: '\nBuilt Talevo, a web platform for reading and exploring interactive, choice-driven stories. Features immersive visuals and replayable story paths. Developed for experimentation in UI/UX design, storytelling logic, and dynamic user interaction.',
+    stack: ['HTML', 'CSS', 'JavaScript', 'Firebase','Firestore'],
+    imageUrl: 'https://picsum.photos/seed/mlclassifier/600/400',
+    githubUrl: 'https://github.com/VaibhavBhagat665/talevo-2',
+    demoUrl: 'https://talevo-2.vercel.app',
+    year: 2024,
+  },
+  {
+    id: 'mindsetu',
+    title: 'MindSetu - Mental Wellness Platform for Students',
+    description: '\nBuilt a full-stack web app for college mental health support during my first hackathon. MindSetu features role-based dashboards for students, teachers, and admins; mood tracking; assignment insights; faculty interventions; AI chatbot support; and strict data privacy.',
+    stack: ['React', 'Tailwind CSS', 'TypeScript', 'Express', 'Node.js', 'Firebase'],
+    imageUrl: 'https://picsum.photos/seed/webscraper/600/400',
+    githubUrl: '#', // Placeholder
+    year: 2023,
+  },
+  {
     id: 'project-portfolio',
     title: 'Personal Portfolio Website',
     description: '\nThis very website! A responsive and animated portfolio built with React, TypeScript, and Tailwind CSS to showcase my skills and projects. Features smooth animations with Framer Motion.',
     stack: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
     imageUrl: 'https://picsum.photos/seed/portfolio/600/400',
     githubUrl: 'https://github.com/vaibhavbhagat01/portfolio-v1', // Replace with actual link
-    demoUrl: '#', // Current site
     year: 2024,
   },
-  {
-    id: 'project-ml-classifier',
-    title: 'Basic Image Classifier',
-    description: '\nAn introductory project exploring machine learning concepts. Built a simple image classifier using Python and a common ML library to categorize images based on pre-trained models.',
-    stack: ['Python', 'Scikit-learn', 'NumPy', 'Matplotlib'],
-    imageUrl: 'https://picsum.photos/seed/mlclassifier/600/400',
-    githubUrl: '#', // Placeholder
-    year: 2024,
-  },
-  {
-    id: 'project-web-scraper',
-    title: 'Simple Web Scraper',
-    description: '\nDeveloped a Python script to extract data from a static website. Focused on learning web scraping fundamentals using libraries like Beautiful Soup and Requests.',
-    stack: ['Python', 'Beautiful Soup', 'Requests'],
-    imageUrl: 'https://picsum.photos/seed/webscraper/600/400',
-    githubUrl: '#', // Placeholder
-    year: 2023,
-  },
-  // Add more projects as Vaibhav completes them
 ];
