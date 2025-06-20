@@ -457,7 +457,7 @@ const ProjectStoryCard: React.FC<{
 
       {/* Enhanced story card */}
       <motion.div
-        className="relative max-w-3xl mx-auto bg-card-dark/95 backdrop-blur-xl rounded-3xl overflow-hidden shadow-2xl border border-accent-teal/40 m-6 md:max-w-2xl"
+        className="relative max-w-5xl mx-auto bg-card-dark/95 backdrop-blur-xl rounded-3xl overflow-hidden shadow-2xl border border-accent-teal/40 m-6 md:max-w-3xl"
         initial={{ scale: 0.5, opacity: 0, y: 100, rotateX: -30 }}
         animate={{ scale: 1, opacity: 1, y: 0, rotateX: 0 }}
         exit={{ scale: 0.5, opacity: 0, y: 100, rotateX: 30 }}
@@ -535,7 +535,7 @@ const ProjectStoryCard: React.FC<{
         <div className="relative grid lg:grid-cols-2 gap-0">
           {/* Enhanced image section */}
           <motion.div 
-            className="relative h-64 lg:h-80 overflow-hidden"
+            className="relative h-48 lg:h-64 overflow-hidden"
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.1, type: "spring", stiffness: 100 }}
@@ -608,7 +608,7 @@ const ProjectStoryCard: React.FC<{
 
           {/* Enhanced content section */}
           <motion.div 
-            className="p-6 lg:p-8 flex flex-col justify-center relative"
+            className="p-4 lg:p-6 flex flex-col justify-center relative"
             initial={{ x: 100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
