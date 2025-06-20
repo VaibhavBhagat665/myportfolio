@@ -125,39 +125,10 @@ const ProjectCard: React.FC<{
           />
           
           {/* Year badge with animation */}
-          <motion.div 
-            className="absolute top-4 right-4 px-3 py-1 bg-black/60 backdrop-blur-sm rounded-full border border-accent-teal/40"
-            style={{ translateZ: 20 }}
-            initial={{ scale: 0, rotate: -180 }}
-            whileInView={{ scale: 1, rotate: 0 }}
-            transition={{ delay: index * 0.1 + 0.3, type: "spring" }}
-            whileHover={{ scale: 1.1, rotateY: 180 }}
-          >
-            <span className="text-accent-teal text-sm font-medium">{project.year}</span>
-          </motion.div>
+          
 
           {/* Floating particles */}
-          {[...Array(3)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-accent-teal/60 rounded-full"
-              style={{
-                left: `${20 + i * 30}%`,
-                top: `${30 + i * 20}%`,
-              }}
-              animate={{
-                y: [-10, -20, -10],
-                opacity: [0.3, 1, 0.3],
-                scale: [0.8, 1.2, 0.8],
-              }}
-              transition={{
-                duration: 2 + i * 0.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: i * 0.3,
-              }}
-            />
-          ))}
+        
         </div>
 
         {/* Content area with enhanced animations */}
@@ -546,7 +517,7 @@ const ProjectStoryCard: React.FC<{
         <div className="relative grid lg:grid-cols-2 gap-0 max-h-[70vh] lg:max-h-[60vh]">
           {/* Enhanced image section */}
           <motion.div 
-            className="relative h-40 lg:h-36 overflow-hidden"
+            className="relative h-42 lg:h-38 overflow-hidden"
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.1, type: "spring", stiffness: 100 }}
@@ -574,47 +545,10 @@ const ProjectStoryCard: React.FC<{
             />
             
             {/* Floating year badge */}
-            <motion.div 
-              className="absolute bottom-6 left-6 px-6 py-3 bg-black/60 backdrop-blur-sm rounded-2xl border border-accent-teal/40"
-              initial={{ opacity: 0, y: 30, rotate: -10 }}
-              animate={{ opacity: 1, y: 0, rotate: 0 }}
-              transition={{ delay: 0.4, type: "spring" }}
-              whileHover={{ scale: 1.05, rotate: 2 }}
-            >
-              <motion.span 
-                className={`text-transparent bg-clip-text bg-gradient-to-r ${currentTheme.accent} font-bold text-xl`}
-                animate={{
-                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-                }}
-                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-              >
-                {project.year}
-              </motion.span>
-            </motion.div>
+            
 
             {/* Animated particles */}
-            {[...Array(6)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-2 h-2 rounded-full"
-                style={{
-                  background: `linear-gradient(45deg, ${currentTheme.accent})`,
-                  left: `${20 + i * 15}%`,
-                  top: `${20 + (i % 3) * 20}%`,
-                }}
-                animate={{
-                  y: [-20, -40, -20],
-                  opacity: [0.3, 1, 0.3],
-                  scale: [0.8, 1.2, 0.8],
-                }}
-                transition={{
-                  duration: 2 + i * 0.3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: i * 0.2,
-                }}
-              />
-            ))}
+            
           </motion.div>
 
           {/* Enhanced content section */}
@@ -640,7 +574,7 @@ const ProjectStoryCard: React.FC<{
 
             {/* Enhanced title with typing animation */}
             <motion.h2 
-              className={`text-3xl lg:text-4xl font-display font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r ${currentTheme.accent} relative`}
+              className={`text-3xl lg:text-4xl font-display font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r ${currentTheme.accent} relative`}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, type: "spring" }}
