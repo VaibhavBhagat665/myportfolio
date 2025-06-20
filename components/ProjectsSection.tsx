@@ -535,7 +535,7 @@ const ProjectStoryCard: React.FC<{
         <div className="relative grid lg:grid-cols-2 gap-0">
           {/* Enhanced image section */}
           <motion.div 
-            className="relative h-96 lg:h-full overflow-hidden"
+            className="relative h-64 lg:h-80 overflow-hidden"
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.1, type: "spring", stiffness: 100 }}
@@ -608,7 +608,7 @@ const ProjectStoryCard: React.FC<{
 
           {/* Enhanced content section */}
           <motion.div 
-            className="p-8 lg:p-12 flex flex-col justify-center relative"
+            className="p-6 lg:p-8 flex flex-col justify-center relative"
             initial={{ x: 100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
