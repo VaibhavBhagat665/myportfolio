@@ -457,7 +457,7 @@ const ProjectStoryCard: React.FC<{
 
       {/* Enhanced story card */}
       <motion.div
-        className="relative max-w-5xl mx-auto bg-card-dark/95 backdrop-blur-xl rounded-3xl overflow-hidden shadow-2xl border border-accent-teal/40 m-8"
+        className="relative max-w-4xl mx-auto bg-card-dark/95 backdrop-blur-xl rounded-3xl overflow-hidden shadow-2xl border border-accent-teal/40 m-8"
         initial={{ scale: 0.5, opacity: 0, y: 100, rotateX: -30 }}
         animate={{ scale: 1, opacity: 1, y: 0, rotateX: 0 }}
         exit={{ scale: 0.5, opacity: 0, y: 100, rotateX: 30 }}
@@ -655,43 +655,44 @@ const ProjectStoryCard: React.FC<{
             
             {/* Enhanced tech stack */}
             <motion.div 
-              className="mb-8 relative z-10"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-            >
-              <motion.h4 
-                className="text-accent-teal font-semibold mb-4 text-lg"
-                animate={{ opacity: [0.7, 1, 0.7] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              >
-                Tech Stack
-              </motion.h4>
-              <div className="flex flex-wrap gap-3">
-                {project.stack.map((tech, techIndex) => (
-                  <motion.span 
-                    key={tech} 
-                    className={`bg-gradient-to-r ${currentTheme.bg} text-accent-teal px-4 py-2 rounded-xl text-sm border border-accent-teal/30 backdrop-blur-sm font-medium relative overflow-hidden group`}
-                    initial={{ opacity: 0, scale: 0, rotate: -180 }}
-                    animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                    transition={{ 
-                      delay: 0.6 + techIndex * 0.1,
-                      type: "spring",
-                      stiffness: 200
-                    }}
-                    whileHover={{ 
-                      scale: 1.05,
-                      boxShadow: `0 0 20px ${currentTheme.glow}`
-                    }}
-                  >
-                    {tech}
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
-                    />
-                  </motion.span>
-                ))}
-              </div>
-            </motion.div>
+  className="mb-8 relative z-10"
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.5, duration: 0.6 }}
+>
+  <motion.h4 
+    className="text-accent-teal font-semibold mb-4 text-lg"
+    animate={{ opacity: [0.7, 1, 0.7] }}
+    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+  >
+    Tech Stack
+  </motion.h4>
+  <div className="flex flex-wrap gap-3">
+    {project.stack.map((tech, techIndex) => (
+      <motion.span 
+        key={tech} 
+        className={`bg-gradient-to-r ${currentTheme.bg} text-accent-teal px-4 py-2 rounded-xl text-sm border border-accent-teal/30 backdrop-blur-sm font-medium relative overflow-hidden group`}
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ 
+          delay: 0.6 + techIndex * 0.1,
+          type: "spring",
+          stiffness: 300,
+          damping: 20
+        }}
+        whileHover={{ 
+          scale: 1.05,
+          boxShadow: `0 0 20px ${currentTheme.glow}`
+        }}
+      >
+        {tech}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
+        />
+      </motion.span>
+    ))}
+  </div>
+</motion.div>
             
             {/* Enhanced action buttons */}
             <motion.div 
@@ -818,28 +819,28 @@ const Projects: React.FC = () => {
     <Section id="projects" className="py-20 relative overflow-hidden">
       {/* Enhanced animated background */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(15)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-accent-teal/30 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [-10, -30, -10],
-              opacity: [0.2, 0.8, 0.2],
-              scale: [0.5, 1, 0.5],
-            }}
-            transition={{
-              duration: 4 + Math.random() * 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: Math.random() * 3,
-            }}
-          />
-        ))}
-      </div>
+    {[...Array(15)].map((_, i) => (
+      <motion.div
+        key={i}
+        className="absolute w-1 h-1 bg-accent-teal/30 rounded-full"
+        style={{
+          left: `${Math.random() * 100}%`,
+          top: `${Math.random() * 100}%`,
+        }}
+        animate={{
+          y: [-10, -30, -10],
+          opacity: [0.2, 0.8, 0.2],
+          scale: [0.5, 1, 0.5],
+        }}
+        transition={{
+          duration: 4 + Math.random() * 2,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: Math.random() * 3,
+        }}
+      />
+    ))}
+  </div>
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Enhanced section header */}
