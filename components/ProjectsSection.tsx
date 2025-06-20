@@ -851,24 +851,8 @@ const Projects: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <motion.h2 
-            className="text-5xl md:text-6xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-accent-teal via-accent-purple to-accent-teal mb-6 relative"
-            animate={{
-              backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-            }}
-            transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-          >
-            Featured Projects
-            
-            {/* Animated underline */}
-            <motion.div
-              className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-1 bg-gradient-to-r from-accent-teal to-accent-purple rounded-full"
-              initial={{ width: 0 }}
-              whileInView={{ width: "60%" }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5, duration: 1, ease: "easeOut" }}
-            />
-          </motion.h2>
+          
+         
           
           <motion.p 
             className="text-text-secondary text-xl max-w-3xl mx-auto leading-relaxed"
