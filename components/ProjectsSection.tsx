@@ -543,7 +543,7 @@ const ProjectStoryCard: React.FC<{
           </motion.span>
         </motion.div>
 
-        <div className="relative grid lg:grid-cols-2 gap-0">
+        <div className="relative grid lg:grid-cols-2 gap-0 max-h-[70vh] lg:max-h-[60vh]">
           {/* Enhanced image section */}
           <motion.div 
             className="relative h-48 lg:h-44 overflow-hidden"
