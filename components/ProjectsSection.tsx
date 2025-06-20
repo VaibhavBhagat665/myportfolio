@@ -816,7 +816,7 @@ const Projects: React.FC = () => {
   };
 
   return (
-    <Section id="projects" className="py-20 relative overflow-hidden">
+    <Section id="projects" title="Featured Projects">
       {/* Enhanced animated background */}
       <div className="absolute inset-0 overflow-hidden">
     {[...Array(15)].map((_, i) => (
