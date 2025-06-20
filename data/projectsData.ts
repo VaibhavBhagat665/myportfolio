@@ -15,7 +15,7 @@ export const projectsData: Project[] = [
   {
     id: 'mindsetu',
     title: 'Mindsetu - Mental Wellness Platform for Students',
-    description: '\nBuilt a full-stack web app for students mental health support featuring role-based dashboards for students, teachers, and admins; mood tracking; assignment insights; AI chatbot support; and strict data privacy.',
+    description: '\nBuilt a web app for students mental health support featuring role-based dashboards for students, teachers, and admins; mood tracking; assignment insights; AI chatbot support; and strict data privacy.',
     stack: ['React', 'Tailwind CSS', 'TypeScript', 'Express', 'Node.js', 'Firebase'],
     imageUrl: 'https://iili.io/FxsR8f1.png',
     demobUrl: 'https://mindsetu-b0db5.web.app/', 
