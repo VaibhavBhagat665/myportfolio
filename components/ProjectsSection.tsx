@@ -394,7 +394,7 @@ const ProjectStoryCard: React.FC<{
 
       {/* Navigation buttons with enhanced animations */}
       <motion.button
-        className="absolute left-8 top-1/2 -translate-y-1/2 w-16 h-16 bg-card-dark/80 backdrop-blur-sm border border-accent-teal/40 rounded-2xl flex items-center justify-center text-accent-teal hover:bg-accent-teal/20 transition-all duration-300 z-10 group"
+        className="absolute left-8 top-1/2 -translate-y-1/2 w-16 h-16 bg-card-dark/80 backdrop-blur-sm border border-accent-teal/40 rounded-2xl flex items-center justify-center text-accent-teal hover:bg-accent-teal/20 transition-all duration-300 z-10 group hidden md:flex"
         onClick={(e) => {
           e.stopPropagation();
           onPrevious();
@@ -425,7 +425,7 @@ const ProjectStoryCard: React.FC<{
       </motion.button>
 
       <motion.button
-        className="absolute right-8 top-1/2 -translate-y-1/2 w-16 h-16 bg-card-dark/80 backdrop-blur-sm border border-accent-teal/40 rounded-2xl flex items-center justify-center text-accent-teal hover:bg-accent-teal/20 transition-all duration-300 z-10 group"
+        className="absolute right-8 top-1/2 -translate-y-1/2 w-16 h-16 bg-card-dark/80 backdrop-blur-sm border border-accent-teal/40 rounded-2xl flex items-center justify-center text-accent-teal hover:bg-accent-teal/20 transition-all duration-300 z-10 group hidden md:flex"
         onClick={(e) => {
           e.stopPropagation();
           onNext();
@@ -457,14 +457,25 @@ const ProjectStoryCard: React.FC<{
 
       {/* Enhanced story card */}
       <motion.div
-        className="relative max-w-5xl mx-auto bg-card-dark/95 backdrop-blur-xl rounded-3xl overflow-hidden shadow-2xl border border-accent-teal/40 m-6 md:max-w-3xl"
-        initial={{ scale: 0.5, opacity: 0, y: 100, rotateX: -30 }}
-        animate={{ scale: 1, opacity: 1, y: 0, rotateX: 0 }}
-        exit={{ scale: 0.5, opacity: 0, y: 100, rotateX: 30 }}
-        transition={{ type: "spring", damping: 20, stiffness: 200 }}
-        onClick={(e) => e.stopPropagation()}
-        style={{ perspective: 1000 }}
-      >
+  className="relative max-w-5xl mx-auto bg-card-dark/95 backdrop-blur-xl rounded-3xl overflow-hidden shadow-2xl border border-accent-teal/40 m-6 md:max-w-3xl"
+  initial={{ scale: 0.5, opacity: 0, y: 100, rotateX: -30 }}
+  animate={{ scale: 1, opacity: 1, y: 0, rotateX: 0 }}
+  exit={{ scale: 0.5, opacity: 0, y: 100, rotateX: 30 }}
+  transition={{ type: "spring", damping: 20, stiffness: 200 }}
+  onClick={(e) => e.stopPropagation()}
+  style={{ perspective: 1000 }}
+  drag="x"
+  dragConstraints={{ left: 0, right: 0 }}
+  onDragEnd={(event, info) => {
+    if (window.innerWidth < 768) { // Only on mobile
+      if (info.offset.x > 100) {
+        onPrevious();
+      } else if (info.offset.x < -100) {
+        onNext();
+      }
+    }
+  }}
+>
         {/* Animated holographic glow */}
         <motion.div 
           className="absolute -inset-1 rounded-3xl opacity-60"
@@ -535,7 +546,7 @@ const ProjectStoryCard: React.FC<{
         <div className="relative grid lg:grid-cols-2 gap-0">
           {/* Enhanced image section */}
           <motion.div 
-            className="relative h-48 lg:h-64 overflow-hidden"
+            className="relative h-48 lg:h-44 overflow-hidden"
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.1, type: "spring", stiffness: 100 }}
