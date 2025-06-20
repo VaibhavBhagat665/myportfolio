@@ -546,7 +546,7 @@ const ProjectStoryCard: React.FC<{
         <div className="relative grid lg:grid-cols-2 gap-0 max-h-[70vh] lg:max-h-[60vh]">
           {/* Enhanced image section */}
           <motion.div 
-            className="relative h-48 lg:h-44 overflow-hidden"
+            className="relative h-40 lg:h-36 overflow-hidden"
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.1, type: "spring", stiffness: 100 }}
@@ -619,7 +619,7 @@ const ProjectStoryCard: React.FC<{
 
           {/* Enhanced content section */}
           <motion.div 
-            className="p-4 lg:p-6 flex flex-col justify-center relative"
+            className="p-3 lg:p-4 flex flex-col justify-center relative overflow-hidden"
             initial={{ x: 100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
@@ -640,7 +640,7 @@ const ProjectStoryCard: React.FC<{
 
             {/* Enhanced title with typing animation */}
             <motion.h2 
-              className={`text-4xl lg:text-5xl font-display font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r ${currentTheme.accent} relative`}
+              className={`text-3xl lg:text-4xl font-display font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r ${currentTheme.accent} relative`}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, type: "spring" }}
