@@ -590,7 +590,7 @@ const ProjectStoryCard: React.FC<{
             
             {/* Enhanced description */}
             <motion.p 
-              className="text-0.1xl lg:text-0.2xl text-text-secondary text-sm mb-3 relative z-10"
+              className="text-0.1xl lg:text-0.2xl text-text-secondary text-sm mb-4 relative z-10"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
