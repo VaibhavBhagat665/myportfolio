@@ -574,7 +574,7 @@ const ProjectStoryCard: React.FC<{
 
             {/* Enhanced title with typing animation */}
             <motion.h2 
-              className={`text-3xl lg:text-4xl font-display font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r ${currentTheme.accent} relative`}
+              className={`text-2xl lg:text-3xl font-display font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r ${currentTheme.accent} relative`}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, type: "spring" }}
