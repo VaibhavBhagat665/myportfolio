@@ -457,7 +457,7 @@ const ProjectStoryCard: React.FC<{
 
       {/* Enhanced story card */}
       <motion.div
-        className="relative max-w-4xl mx-auto bg-card-dark/95 backdrop-blur-xl rounded-3xl overflow-hidden shadow-2xl border border-accent-teal/40 m-8"
+        className="relative max-w-3xl mx-auto bg-card-dark/95 backdrop-blur-xl rounded-3xl overflow-hidden shadow-2xl border border-accent-teal/40 m-6 md:max-w-2xl"
         initial={{ scale: 0.5, opacity: 0, y: 100, rotateX: -30 }}
         animate={{ scale: 1, opacity: 1, y: 0, rotateX: 0 }}
         exit={{ scale: 0.5, opacity: 0, y: 100, rotateX: 30 }}
