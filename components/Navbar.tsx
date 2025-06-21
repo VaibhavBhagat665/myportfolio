@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { NAV_LINKS } from '../constants';
 import { MenuIcon, XIcon } from './ui/Icons'; 
 
+
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
