@@ -69,82 +69,178 @@ const AIChatbot: React.FC = () => {
         Your goal is to answer questions about Vaibhav based on the information provided below. 
         Be concise and professional. If a question is outside the scope of this information, politely state that you can only provide details based on his portfolio.
         You can also guide users to different sections of the website if their query implies it (e.g., "Tell me about his projects" -> "You can find more details in the Projects section.").
-  
-        name: "Vaibhav Bhagat",
-  age: 19,
+  export const userProfile = {
+  name: "Vaibhav Bhagat",
+  age: 20,
   college: "Indian Institute of Information Technology (IIIT) Sonepat",
-  branch: "Computer Science and Engineering",
+  branch: "Information Technology",
   year: "1st year (2024-2028)",
-  
-  // Personality Overview
-  personality: "Vaibhav is a curious and self-driven learner with a passion for building real things using code. He prefers practical knowledge over pure theory and loves working on innovative projects, especially in AI, ML, and web development. He's also grounded, direct, and prefers honest, no-fluff conversations.",
 
-  // Tech Skills with Context
+  personality: 'Vaibhav is a proactive, ambitious, and impact-driven learner who blends technical depth with strong communication and leadership skills. He thrives in collaborative environments, takes initiative naturally, and prefers building real-world projects that solve problems or inspire curiosity. Known for his clarity of thought, ownership, and efficiency, he consistently seeks to elevate both technical and human aspects of software projects.',
+
   skills: {
-    languages: ["Python (main ML language)", "JavaScript (web dev)", "C++ (academic)", "HTML/CSS (frontend basics)"],
-    machineLearning: [
-      "Regression, Classification, Support Vector Machines",
-      "Scikit-learn",
-      "Tried XGBoost and Decision Trees",
-      "Comfortable analyzing and cleaning data",
-      "Reinforcement Learning basics (Q-learning)"
+    languages: [
+      "Python (for ML, automation, and scripting)",
+      "JavaScript (for frontend and interactivity)",
+      "C++ (academic and algorithmic problems)",
+      "HTML & CSS (UI development)"
     ],
-    tools: ["Git & GitHub", "VS Code", "Firebase (used in personal projects)"],
-    webDev: ["React", "Tailwind CSS", "Basic DOM & Event Handling"],
-    other: ["Prompt Engineering", "Basic Project Management", "Portfolio Design"]
+    machineLearning: [
+      "Linear & Logistic Regression",
+      "Support Vector Machines (SVM)",
+      "Classification, Clustering, and Data Preprocessing",
+      "Scikit-learn, Pandas, NumPy",
+      "Reinforcement Learning (Q-learning basics)",
+      "Model tuning, evaluation, and deployment mindset"
+    ],
+    tools: [
+      "Git & GitHub (version control, collaborative dev)",
+      "VS Code (daily environment)",
+      "Firebase (real-time backend)",
+      "Google GenAI (chat and context-aware systems)"
+    ],
+    webDev: [
+      "React with JSX & State Management",
+      "Tailwind CSS for efficient styling",
+      "DOM manipulation, Forms, Responsive Design",
+      "Frontend-backend integration with Firebase"
+    ],
+    leadershipAndPM: [
+      "Project Planning & Timeline Breakdown",
+      "Task Delegation using GitHub Projects or Notion",
+      "Team Collaboration (Hackathon experience or group projects)",
+      "Clear Communication, Daily Progress Syncing",
+      "UI/UX decision-making and product flow mapping"
+    ],
+    softSkills: [
+      "Strong verbal and written communication",
+      "Team-first mindset, listens and adapts",
+      "Problem-solving under pressure",
+      "Quick learner with self-accountability",
+      "Confidence in articulating technical ideas to non-tech audiences"
+    ]
   },
 
-  // Learning Journey
-  learningJourney: "Started with Python and C++, then built ML models with scikit-learn. Explored regression/classification, and created some ML-based games and price predictors. Recently got into web development using React and Tailwind, and built a storytelling app with Firebase for data storage. Also learning about GenAI and chatbot integrations.",
+  learningJourney: 'Vaibhav's journey started with Python and C++ in school, followed by hands-on experiments in ML using scikit-learn. He quickly moved to creating regression and classification projects, diving into Q-learning for curiosity. Realizing the value of end-to-end dev, he added React and Firebase to his stack. He’s now exploring GenAI and context-aware assistants. He learns fast, applies faster.',
 
-  // Notable Projects with Reasoning
   projects: [
     {
-      name: "Interactive Storytelling App",
-      description: "A web app that lets users read and explore story paths by making choices, similar to 'choose your own adventure'. Used Firebase to store branching logic. It was made to learn how to combine frontend with real-time backend.",
-      stack: ["HTML", "CSS", "JavaScript", "Firebase"]
-    },
+    id: 'talevo',
+    title: 'Talevo - Interactive Storytelling WebApp',
+    description: '\nBuilt Talevo, a web platform for reading and exploring interactive, choice-driven stories. Features immersive visuals and replayable story paths. Developed for experimentation in UI/UX design, storytelling logic, and dynamic user interaction.',
+    stack: ['HTML', 'CSS', 'JavaScript', 'Firebase','Firestore'],
+    imageUrl: 'https://iili.io/3QjTfpf.png',
+    githubUrl: 'https://github.com/VaibhavBhagat665/talevo-2',
+    demoUrl: 'https://talevo-2.vercel.app',
+    year: 2024,
+  },
+  {
+    id: 'mindsetu',
+    title: 'Mindsetu - Mental Wellness Platform for Students',
+    description: '\nBuilt a full-stack web app for college mental health support during my first hackathon. MindSetu features role-based dashboards for students, teachers, and admins; mood tracking; assignment insights; AI chatbot support; and data privacy.',
+    stack: ['React', 'Tailwind CSS', 'TypeScript', 'Express', 'Node.js', 'Firebase'],
+    imageUrl: 'https://iili.io/FxsR8f1.png',
+    demoUrl: 'https://mindsetu-b0db5.web.app/', 
+    year: 2023,
+  },
     {
       name: "Tic-Tac-Toe Q-learning Agent",
-      description: "Built a reinforcement learning agent that learns how to play Tic-Tac-Toe optimally. Helped understand value updates, exploration vs exploitation, and the idea of learning through trial.",
+      description: "Implemented a self-learning Tic-Tac-Toe bot that updates its strategy through trial and error. It helped Vaibhav grasp how RL agents behave and how state-action value pairs evolve.",
       stack: ["Python"]
     },
     {
       name: "Real Estate Price Prediction",
-      description: "Used regression models to predict prices based on features. The project helped sharpen Vaibhav's skills in data preprocessing, encoding, and model evaluation.",
-      stack: ["Python", "scikit-learn"]
+      description: "Designed a regression-based ML model that predicts housing prices based on features like location, area, and condition. This polished his data cleaning, feature encoding, and model evaluation skills.",
+      stack: ["Python", "Scikit-learn"]
     }
   ],
 
-  // Certifications
   certifications: [
     {
-      name: "Machine Learning A-Z",
-      platform: "Udemy",
-      by: "SuperDataScience",
-      year: "2024"
-    }
+    id: 'ml-a-z-udemy',
+    name: 'Machine Learning A-Z™: AI, Python & R + ChatGPT Bonus',
+    issuer: 'Udemy',
+    date: 'January 2025', // Or a completion date like '2024-03'
+    credentialUrl: 'https://www.udemy.com/certificate/UC-189be3bb-1e33-4874-8c89-430de5db2350/', 
+    logoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7zmzguRUdNPxg-5ixP9ICiFXXiKx1gBAIKQ&s',
+  },
+  {
+    id: 'python-data-science',
+    name: 'Python for Data Science',
+    issuer: 'IBM',
+    date: 'July 2023',
+    credentialUrl: 'https://www.credly.com/badges/4fdfb73e-7676-40fe-87fa-8fb638b40cbd', 
+    logoUrl: 'https://static-00.iconduck.com/assets.00/ibm-icon-2048x2048-p5c23kq4.png',
+  },
+  {
+    id: 'foundational-project-management',
+    name: 'Foundations of Project Management',
+    issuer: 'Google',
+    date: 'June 2025',
+    credentialUrl: 'https://www.coursera.org/account/accomplishments/verify/TD8QEM1CH7I6?utm_source%3Dandroid%26utm_medium%3Dcertificate%26utm_content%3Dcert_image%26utm_campaign%3Dsharing_cta%26utm_product%3Dcourse', 
+    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png',
+  },
+  {
+    id: 'sql-intermediate',
+    name: 'SQL Intermediate Certification',
+    issuer: 'HackerRank',
+    date: 'July 2023',
+    credentialUrl: 'https://www.hackerrank.com/certificates/251aca2f6583', 
+    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/40/HackerRank_Icon-1000px.png',
+  },
+  {
+    id: 'web-dev-bootcamp',
+    name: 'The Complete Web Development Bootcamp',
+    issuer: 'Udemy',
+    date: 'Ongoing',
+    // credentialUrl: '#', 
+    logoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7zmzguRUdNPxg-5ixP9ICiFXXiKx1gBAIKQ&s',
+  },
   ],
 
-  // Career Goals
-  aspirations: "Vaibhav is aiming to become an AI Engineer or Research Intern by the 2nd or 3rd year. He’s also open to research labs or startups where he can apply GenAI, NLP, or ML-based decision systems. Eventually, he’s interested in working on systems that blend human creativity with machine intelligence.",
+  aspirations: 'Vaibhav is aiming for AI/ML research internships or product-based internships that involve real problem-solving, ML/AI pipelines, or GenAI integrations. Long-term, he wants to contribute to building intelligent systems that support human creativity and cognition — especially in learning tools, automation, or storytelling systems. He is also open for SDE intern roles.',
 
-  // Conversation Style
   preferences: {
-    tone: "Direct, honest, not overly formal",
-    likesAnswerStyle: "Gives solutions with reasoning; doesn’t like vague replies",
-    language: "Mostly English but casual tone is okay",
-    favoriteTopics: ["GenAI", "Chatbots", "ML Projects", "Coding Challenges", "Clean UI Design"],
-    personalityKeywords: ["curious", "builder", "efficient", "realistic"]
+    tone: "Confident but not arrogant, honest but friendly",
+    likesAnswerStyle: "Precise, direct, and insightful with good reasoning",
+    favoriteTopics: [
+      "GenAI & Prompt Engineering",
+      "AI Assistants & NLP",
+      "React Apps",
+      "ML Model Debugging",
+      "Human-AI Collaboration"
+    ],
+    personalityKeywords: [
+      "builder",
+      "driven",
+      "quick learner",
+      "problem solver",
+      "team contributor",
+      "efficient communicator"
+    ]
   },
 
-  // Fun Facts & Background
   extras: {
-    hometown: "Haryana, India",
-    likes: ["Coding late night", "Exploring AI tools", "Listening to music while working", "Lifting dumbbells in hostel"],
-    habits: ["Sometimes self-releases stress through self-talk or writing", "Feels most productive when focused and not multitasking"],
-    beliefs: ["Prefers human-AI collaboration", "Believes AI should assist humans without replacing creativity"]
+    hometown: "Delhi, India",
+    likes: [
+      "Night coding sessions",
+      "Listening to lo-fi or indie music while working",
+      "Solving algorithmic problems for fun",
+      "Lifting dumbbells or stretching to reset brain",
+      "Chatting with GenAI assistants to learn prompt structuring"
+    ],
+    habits: [
+      "Reflects on self-growth frequently",
+      "Balances technical with creative expression",
+      "Tries to document what he builds or learns"
+    ],
+    values: [
+      "Efficiency in design and communication",
+      "Helping others debug or unblock",
+      "AI should be an assistant, not a replacement"
+    ]
   }
+};
 
         Skills:
         ${skillsData.map(skill => `- ${skill.name} (${skill.category})`).join('\n')}
@@ -154,6 +250,8 @@ const AIChatbot: React.FC = () => {
 
         Certifications:
         ${certificationsData.map(cert => `- ${cert.name} from ${cert.issuer} (${cert.date})`).join('\n')}
+    Important: Do not use markdown symbols like asterisks (**) or backticks () in your responses. Write everything as plain text, in a natural and readable way.
+
       `;
 
       chatSessionRef.current = ai.chats.create({
