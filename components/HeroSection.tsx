@@ -204,16 +204,16 @@ const CodeIcon3D: React.FC = () => {
         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
       >
         <div className="absolute -top-2 left-1/3 w-1.5 h-1.5 bg-cyan-200 rounded-full flex items-center justify-center">
-          <span className="text-slate-800 text-xs font-mono font-bold">1</span>
+          <span className="text-slate-800 text-xs font-mono font-bold"></span>
         </div>
         <div className="absolute top-1/3 -right-2 w-1.5 h-1.5 bg-purple-200 rounded-full flex items-center justify-center">
-          <span className="text-slate-800 text-xs font-mono font-bold">0</span>
+          <span className="text-slate-800 text-xs font-mono font-bold"></span>
         </div>
         <div className="absolute -bottom-2 right-1/3 w-1.5 h-1.5 bg-indigo-200 rounded-full flex items-center justify-center">
-          <span className="text-slate-800 text-xs font-mono font-bold">1</span>
+          <span className="text-slate-800 text-xs font-mono font-bold"></span>
         </div>
         <div className="absolute bottom-1/3 -left-2 w-1.5 h-1.5 bg-pink-200 rounded-full flex items-center justify-center">
-          <span className="text-slate-800 text-xs font-mono font-bold">0</span>
+          <span className="text-slate-800 text-xs font-mono font-bold"></span>
         </div>
       </motion.div>
       
@@ -224,16 +224,16 @@ const CodeIcon3D: React.FC = () => {
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
       >
         <div className="absolute -top-8 right-1/3 w-2.5 h-2.5 bg-gradient-to-r from-purple-400 to-violet-400 rounded-full flex items-center justify-center">
-          <span className="text-white text-xs font-mono">AI</span>
+          <span className="text-white text-xs font-mono"></span>
         </div>
         <div className="absolute top-2/3 -right-8 w-2.5 h-2.5 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full flex items-center justify-center">
-          <span className="text-white text-xs font-mono">ML</span>
+          <span className="text-white text-xs font-mono"></span>
         </div>
         <div className="absolute -bottom-8 left-1/3 w-2.5 h-2.5 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full flex items-center justify-center">
-          <span className="text-white text-xs font-mono">NN</span>
+          <span className="text-white text-xs font-mono"></span>
         </div>
         <div className="absolute bottom-2/3 -left-8 w-2.5 h-2.5 bg-gradient-to-r from-cyan-400 to-indigo-400 rounded-full flex items-center justify-center">
-          <span className="text-white text-xs font-mono">DL</span>
+          <span className="text-white text-xs font-mono"></span>
         </div>
       </motion.div>
       
