@@ -4,6 +4,7 @@ import { GoogleGenAI, Chat, GenerateContentResponse } from "@google/genai";
 import { ChatMessage } from '../types';
 import { USER_INFO } from '../constants';
 import { skillsData } from '../data/skillsData';
+import { userProfile } from '../data/userProfile';
 import { projectsData } from '../data/projectsData';
 import { certificationsData } from '../data/certificationsData';
 import { ChatBubbleIcon, XIcon, SendIcon } from './ui/Icons';
@@ -68,12 +69,82 @@ const AIChatbot: React.FC = () => {
         Your goal is to answer questions about Vaibhav based on the information provided below. 
         Be concise and professional. If a question is outside the scope of this information, politely state that you can only provide details based on his portfolio.
         You can also guide users to different sections of the website if their query implies it (e.g., "Tell me about his projects" -> "You can find more details in the Projects section.").
+  
+        name: "Vaibhav Bhagat",
+  age: 19,
+  college: "Indian Institute of Information Technology (IIIT) Sonepat",
+  branch: "Computer Science and Engineering",
+  year: "1st year (2024-2028)",
+  
+  // Personality Overview
+  personality: "Vaibhav is a curious and self-driven learner with a passion for building real things using code. He prefers practical knowledge over pure theory and loves working on innovative projects, especially in AI, ML, and web development. He's also grounded, direct, and prefers honest, no-fluff conversations.",
 
-        Information about Vaibhav Bhagat:
-        Name: ${USER_INFO.name}
-        Role: ${USER_INFO.role}
-        Aspirations: ${USER_INFO.aspirations}
-        Bio: ${USER_INFO.bio}
+  // Tech Skills with Context
+  skills: {
+    languages: ["Python (main ML language)", "JavaScript (web dev)", "C++ (academic)", "HTML/CSS (frontend basics)"],
+    machineLearning: [
+      "Regression, Classification, Support Vector Machines",
+      "Scikit-learn",
+      "Tried XGBoost and Decision Trees",
+      "Comfortable analyzing and cleaning data",
+      "Reinforcement Learning basics (Q-learning)"
+    ],
+    tools: ["Git & GitHub", "VS Code", "Firebase (used in personal projects)"],
+    webDev: ["React", "Tailwind CSS", "Basic DOM & Event Handling"],
+    other: ["Prompt Engineering", "Basic Project Management", "Portfolio Design"]
+  },
+
+  // Learning Journey
+  learningJourney: "Started with Python and C++, then built ML models with scikit-learn. Explored regression/classification, and created some ML-based games and price predictors. Recently got into web development using React and Tailwind, and built a storytelling app with Firebase for data storage. Also learning about GenAI and chatbot integrations.",
+
+  // Notable Projects with Reasoning
+  projects: [
+    {
+      name: "Interactive Storytelling App",
+      description: "A web app that lets users read and explore story paths by making choices, similar to 'choose your own adventure'. Used Firebase to store branching logic. It was made to learn how to combine frontend with real-time backend.",
+      stack: ["HTML", "CSS", "JavaScript", "Firebase"]
+    },
+    {
+      name: "Tic-Tac-Toe Q-learning Agent",
+      description: "Built a reinforcement learning agent that learns how to play Tic-Tac-Toe optimally. Helped understand value updates, exploration vs exploitation, and the idea of learning through trial.",
+      stack: ["Python"]
+    },
+    {
+      name: "Real Estate Price Prediction",
+      description: "Used regression models to predict prices based on features. The project helped sharpen Vaibhav's skills in data preprocessing, encoding, and model evaluation.",
+      stack: ["Python", "scikit-learn"]
+    }
+  ],
+
+  // Certifications
+  certifications: [
+    {
+      name: "Machine Learning A-Z",
+      platform: "Udemy",
+      by: "SuperDataScience",
+      year: "2024"
+    }
+  ],
+
+  // Career Goals
+  aspirations: "Vaibhav is aiming to become an AI Engineer or Research Intern by the 2nd or 3rd year. He’s also open to research labs or startups where he can apply GenAI, NLP, or ML-based decision systems. Eventually, he’s interested in working on systems that blend human creativity with machine intelligence.",
+
+  // Conversation Style
+  preferences: {
+    tone: "Direct, honest, not overly formal",
+    likesAnswerStyle: "Gives solutions with reasoning; doesn’t like vague replies",
+    language: "Mostly English but casual tone is okay",
+    favoriteTopics: ["GenAI", "Chatbots", "ML Projects", "Coding Challenges", "Clean UI Design"],
+    personalityKeywords: ["curious", "builder", "efficient", "realistic"]
+  },
+
+  // Fun Facts & Background
+  extras: {
+    hometown: "Haryana, India",
+    likes: ["Coding late night", "Exploring AI tools", "Listening to music while working", "Lifting dumbbells in hostel"],
+    habits: ["Sometimes self-releases stress through self-talk or writing", "Feels most productive when focused and not multitasking"],
+    beliefs: ["Prefers human-AI collaboration", "Believes AI should assist humans without replacing creativity"]
+  }
 
         Skills:
         ${skillsData.map(skill => `- ${skill.name} (${skill.category})`).join('\n')}
