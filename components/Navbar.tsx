@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { NAV_LINKS } from '../constants';
-import { MenuIcon, XIcon } from './ui/Icons';
+import { MenuIcon, XIcon } from './ui/Icons'; 
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -15,7 +15,7 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (id) => {
+  const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -38,68 +38,51 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-end h-20">
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-2">
+        <div className="flex items-center justify-end h-20"> {/* Changed justify-between to justify-end */}
+          {/* VB initials removed */}
+          <div className="hidden md:flex space-x-6">
             {NAV_LINKS.map((link, index) => (
               <motion.button
                 key={link.id}
                 variants={navItemVariants}
                 initial="hidden"
                 animate="visible"
-                whileHover={{ scale: 1.05 }}
                 transition={{ delay: 0.1 * index + 0.5, duration: 0.3 }}
                 onClick={() => scrollToSection(link.id)}
-                className="relative group font-semibold text-sm lg:text-base text-text-secondary hover:text-accent-teal transition-all duration-300 px-4 py-2.5 rounded-lg"
+                className="font-medium text-text-secondary hover:text-accent-teal transition-colors duration-300 px-3 py-2 rounded-md text-sm"
               >
-                <span className="relative z-10 tracking-wide">
-                  {link.label}
-                </span>
-                <div className="absolute inset-0 bg-accent-teal/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-1 left-4 right-4 h-0.5 bg-accent-teal rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                {link.label}
               </motion.button>
             ))}
           </div>
-
-          {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
+            <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 text-text-primary hover:text-accent-teal focus:outline-none transition-colors duration-300 rounded-lg hover:bg-accent-teal/10"
+              className="text-text-primary hover:text-accent-teal focus:outline-none"
               aria-label="Toggle menu"
             >
               {isOpen ? <XIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
-            </motion.button>
+            </button>
           </div>
         </div>
       </div>
-
       {/* Mobile Menu */}
       {isOpen && (
         <motion.div
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
           exit={{ opacity: 0, height: 0 }}
-          transition={{ duration: 0.3 }}
-          className="md:hidden bg-background-light/95 backdrop-blur-md border-t border-accent-teal/20"
+          className="md:hidden bg-background-light/95 backdrop-blur-md"
         >
-          <div className="px-4 pt-4 pb-6 space-y-2">
-            {NAV_LINKS.map((link, index) => (
-              <motion.button
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            {NAV_LINKS.map((link) => (
+              <button
                 key={link.id}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.3 }}
-                whileHover={{ x: 4 }}
                 onClick={() => scrollToSection(link.id)}
-                className="group block w-full text-left px-4 py-3 rounded-xl text-base font-semibold text-text-primary hover:bg-accent-teal/15 hover:text-accent-teal transition-all duration-300"
+                className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-text-primary hover:bg-accent-teal/20 hover:text-accent-teal transition-colors duration-300"
               >
-                <span className="tracking-wide">
-                  {link.label}
-                </span>
-              </motion.button>
+                {link.label}
+              </button>
             ))}
           </div>
         </motion.div>
