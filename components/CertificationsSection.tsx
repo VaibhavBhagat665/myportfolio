@@ -189,20 +189,37 @@ const CertificationItem: React.FC<{ cert: Certification; index: number }> = ({ c
         </motion.div>
 
         <div className="flex items-start space-x-4 relative z-10">
-          {/* Enhanced Icon Container */}
+          {/* Enhanced Logo/Icon Container */}
           <motion.div 
             variants={iconVariants}
             initial="rest"
             animate={isHovered ? "hover" : "rest"}
-            className="flex-shrink-0 relative"
+            className="flex-shrink-0 relative w-20 h-20"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-accent-purple to-accent-teal rounded-lg blur opacity-50" />
+            <div className="absolute inset-0 bg-gradient-to-r from-accent-purple to-accent-teal rounded-xl blur opacity-50" />
             <div className="relative bg-gradient-to-br from-accent-purple/20 to-accent-teal/20 
-                           p-3 rounded-lg border border-accent-teal/30 backdrop-blur-sm">
-              {cert.icon ? 
-                <cert.icon className="w-8 h-8 text-accent-teal drop-shadow-lg" /> : 
-                <AcademicCapIcon className="w-8 h-8 text-accent-teal drop-shadow-lg" />
-              }
+                           w-full h-full rounded-xl border border-accent-teal/30 backdrop-blur-sm
+                           flex items-center justify-center overflow-hidden group/logo">
+              
+              {/* Logo Image Placeholder */}
+              {cert.logoUrl ? (
+                <img 
+                  src={cert.logoUrl} 
+                  alt={`${cert.issuer} logo`}
+                  className="w-12 h-12 object-contain drop-shadow-lg group-hover/logo:scale-110 transition-transform duration-300"
+                />
+              ) : cert.icon ? (
+                <cert.icon className="w-12 h-12 text-accent-teal drop-shadow-lg" />
+              ) : (
+                <div className="w-12 h-12 bg-gradient-to-br from-accent-teal/30 to-accent-purple/30 
+                               rounded-lg border-2 border-dashed border-accent-teal/50 
+                               flex items-center justify-center text-accent-teal/70 text-xs font-medium">
+                  LOGO
+                </div>
+              )}
+              
+              {/* Subtle Pattern Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-xl" />
             </div>
             
             {/* Floating Particles Animation */}
