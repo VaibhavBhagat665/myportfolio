@@ -26,8 +26,8 @@ export const projectsData: Project[] = [
     title: 'Personal Portfolio Website',
     description: '\nThis very website! A responsive and animated portfolio built with React, TypeScript, and Tailwind CSS to showcase my skills and projects. Features smooth animations with Framer Motion.',
     stack: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
-    imageUrl: 'https://picsum.photos/seed/portfolio/600/400',
-    githubUrl: 'https://github.com/vaibhavbhagat01/portfolio-v1', // Replace with actual link
+    imageUrl: 'https://iili.io/FznVOc7.png',
+    githubUrl: 'https://github.com/vaibhavbhagat665/myportfolio',
     year: 2024,
   },
 ];
