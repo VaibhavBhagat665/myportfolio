@@ -14,6 +14,7 @@ interface FormData {
 const ContactSection: React.FC<{ id: string }> = ({ id }) => {
   const [formData, setFormData] = useState<FormData>({ name: '', email: '', message: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -22,13 +23,17 @@ const ContactSection: React.FC<{ id: string }> = ({ id }) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
+    
     // Basic validation
     if (!formData.name || !formData.email || !formData.message) {
       setError('Please fill in all fields.');
+      setIsLoading(false);
       return;
     }
     if (!/\S+@\S+\.\S+/.test(formData.email)) {
       setError('Please enter a valid email address.');
+      setIsLoading(false);
       return;
     }
     setError('');
@@ -68,18 +73,20 @@ const ContactSection: React.FC<{ id: string }> = ({ id }) => {
     } catch (error) {
       console.error('Error sending email:', error);
       setError('Failed to send message. Please try again or contact me directly.');
+    } finally {
+      setIsLoading(false);
     }
   };
   
   const inputVariants = {
     focus: { 
-      borderColor: '#14b8a6', // accent-teal
+      borderColor: '#14b8a6',
       boxShadow: '0 0 0 3px rgba(20, 184, 166, 0.15)',
       scale: 1.02,
       transition: { duration: 0.3 }
     },
     blur: {
-      borderColor: '#27272a', // border-dark
+      borderColor: '#27272a',
       boxShadow: 'none',
       scale: 1,
       transition: { duration: 0.3 }
@@ -104,9 +111,9 @@ const ContactSection: React.FC<{ id: string }> = ({ id }) => {
       <div className="max-w-3xl mx-auto">
         <motion.p 
           className="text-center text-text-secondary mb-10"
-          initial={{ opacity:0, y:10 }}
-          animate={{ opacity:1, y:0 }}
-          transition={{ duration:0.5, delay:0.2 }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
         >
           Have a project in mind, a question, or just want to connect? Feel free to reach out! I'm always open to discussing new opportunities and collaborations.
         </motion.p>
@@ -126,8 +133,8 @@ const ContactSection: React.FC<{ id: string }> = ({ id }) => {
             >
               <SendIcon className="w-8 h-8 text-accent-teal" />
             </motion.div>
-            <h3 className="text-2xl font-semibold mb-2">Thank you!</h3>
-            <p className="text-text-secondary">Your email client should open with the pre-filled message. I'll get back to you soon!</p>
+            <h3 className="text-2xl font-semibold mb-2">Message Sent Successfully!</h3>
+            <p className="text-text-secondary">Thank you for reaching out! I've received your message and will get back to you soon.</p>
           </motion.div>
         ) : (
           <motion.form 
@@ -137,7 +144,6 @@ const ContactSection: React.FC<{ id: string }> = ({ id }) => {
             initial="initial"
             animate="animate"
           >
-            {/* Subtle gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-br from-accent-teal/5 via-transparent to-transparent pointer-events-none rounded-2xl" />
             
             <div className="relative z-10">
@@ -166,6 +172,7 @@ const ContactSection: React.FC<{ id: string }> = ({ id }) => {
                     placeholder="Your Name"
                     whileFocus="focus"
                     variants={inputVariants}
+                    disabled={isLoading}
                   />
                 </div>
                 
@@ -183,6 +190,7 @@ const ContactSection: React.FC<{ id: string }> = ({ id }) => {
                     placeholder="you@example.com"
                     whileFocus="focus"
                     variants={inputVariants}
+                    disabled={isLoading}
                   />
                 </div>
                 
@@ -200,43 +208,43 @@ const ContactSection: React.FC<{ id: string }> = ({ id }) => {
                     placeholder="Your message..."
                     whileFocus="focus"
                     variants={inputVariants}
+                    disabled={isLoading}
                   />
                 </div>
               </div>
               
               <div className="text-center pt-4">
                 <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={!isLoading ? { scale: 1.05 } : {}}
+                  whileTap={!isLoading ? { scale: 0.95 } : {}}
                   className="inline-block"
                 >
-                  <Button 
-                    type="submit" 
-                    variant="primary" 
-                    size="lg" 
-                    rightIcon={<SendIcon className="w-5 h-5"/>}
-                    className="relative overflow-hidden bg-gradient-to-r from-accent-teal via-teal-500 to-cyan-500 hover:from-teal-600 hover:via-accent-teal hover:to-teal-400 text-white font-semibold px-8 py-4 rounded-2xl shadow-[0_8px_30px_rgb(20,184,166,0.3)] hover:shadow-[0_12px_40px_rgb(20,184,166,0.4)] transition-all duration-300 group border-2 border-accent-teal/20 hover:border-accent-teal/40"
+                  <button
+                    type="submit"
+                    disabled={isLoading}
+                    className={`relative overflow-hidden bg-gradient-to-r from-accent-teal via-teal-500 to-cyan-500 hover:from-teal-600 hover:via-accent-teal hover:to-teal-400 text-white font-semibold px-8 py-4 rounded-2xl shadow-[0_8px_30px_rgb(20,184,166,0.3)] hover:shadow-[0_12px_40px_rgb(20,184,166,0.4)] transition-all duration-300 group border-2 border-accent-teal/20 hover:border-accent-teal/40 disabled:opacity-70 disabled:cursor-not-allowed`}
                   >
                     <span className="relative z-10 flex items-center gap-3">
-                      Send Message
+                      {isLoading ? 'Sending...' : 'Send Message'}
                       <motion.div
-                        animate={{ x: [0, 3, 0] }}
+                        animate={!isLoading ? { x: [0, 3, 0] } : {}}
                         transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
                       >
-                        <SendIcon className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
+                        <SendIcon className={`w-5 h-5 ${!isLoading ? 'group-hover:rotate-12' : ''} transition-transform duration-300`} />
                       </motion.div>
                     </span>
                     
-                    {/* Animated background gradient */}
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100"
-                      animate={{ x: ['-100%', '100%'] }}
-                      transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
-                    />
-                    
-                    {/* Glow effect */}
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent-teal/50 via-teal-400/50 to-cyan-400/50 blur-lg opacity-0 group-hover:opacity-70 transition-opacity duration-300 -z-10" />
-                  </Button>
+                    {!isLoading && (
+                      <>
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100"
+                          animate={{ x: ['-100%', '100%'] }}
+                          transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+                        />
+                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent-teal/50 via-teal-400/50 to-cyan-400/50 blur-lg opacity-0 group-hover:opacity-70 transition-opacity duration-300 -z-10" />
+                      </>
+                    )}
+                  </button>
                 </motion.div>
               </div>
             </div>
@@ -252,13 +260,13 @@ const ContactSection: React.FC<{ id: string }> = ({ id }) => {
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, y: -5, color: '#14b8a6' }} // accent-teal
+                whileHover={{ scale: 1.2, y: -5, color: '#14b8a6' }}
                 whileTap={{ scale: 0.9 }}
                 className="text-text-secondary hover:text-accent-teal transition-colors"
                 aria-label={link.name}
-                initial={{ opacity:0, y:10 }}
-                animate={{ opacity:1, y:0 }}
-                transition={{ duration:0.3, delay: 0.6 + index * 0.1 }}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.6 + index * 0.1 }}
               >
                 <link.icon className="w-8 h-8" />
               </motion.a>
