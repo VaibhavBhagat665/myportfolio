@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { motion, Variants, Easing, AnimatePresence } from 'framer-motion';
+import { motion, Variants, AnimatePresence } from 'framer-motion';
 import Section from './ui/Section';
 import { certificationsData } from '../data/certificationsData';
 import { Certification } from '../types';
-import { AcademicCapIcon, ExternalLinkIcon, StarIcon, CheckCircleIcon } from './ui/Icons';
+import { AcademicCapIcon, ExternalLinkIcon } from './ui/Icons';
 
 const CertificationItem: React.FC<{ cert: Certification; index: number }> = ({ cert, index }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -182,7 +182,9 @@ const CertificationItem: React.FC<{ cert: Certification; index: number }> = ({ c
                      text-white text-xs px-2 py-1 rounded-full flex items-center gap-1
                      shadow-lg backdrop-blur-sm"
         >
-          <CheckCircleIcon className="w-3 h-3" />
+          <div className="w-3 h-3 bg-white rounded-full flex items-center justify-center">
+            <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+          </div>
           Verified
         </motion.div>
 
@@ -203,7 +205,7 @@ const CertificationItem: React.FC<{ cert: Certification; index: number }> = ({ c
               }
             </div>
             
-            {/* Floating Stars Animation */}
+            {/* Floating Particles Animation */}
             <AnimatePresence>
               {isHovered && (
                 <>
@@ -226,7 +228,7 @@ const CertificationItem: React.FC<{ cert: Certification; index: number }> = ({ c
                       }}
                       className="absolute top-0 left-1/2 transform -translate-x-1/2"
                     >
-                      <StarIcon className="w-3 h-3 text-yellow-400" />
+                      <div className="w-2 h-2 bg-yellow-400 rounded-full opacity-80 shadow-lg"></div>
                     </motion.div>
                   ))}
                 </>
@@ -345,7 +347,9 @@ const CertificationsSection: React.FC<{ id: string }> = ({ id }) => {
           <div className="relative inline-block">
             <div className="absolute inset-0 bg-gradient-to-r from-accent-purple/20 to-accent-teal/20 blur-lg rounded-full" />
             <div className="relative bg-card-dark border border-border-dark/50 rounded-xl p-8 backdrop-blur-sm">
-              <AcademicCapIcon className="w-12 h-12 text-accent-teal mx-auto mb-4 opacity-60" />
+              <div className="w-12 h-12 bg-gradient-to-r from-accent-purple to-accent-teal rounded-full flex items-center justify-center mx-auto mb-4 opacity-60">
+                <div className="w-6 h-6 bg-white rounded-sm"></div>
+              </div>
               <p className="text-text-secondary text-lg">
                 No certifications listed yet.
               </p>
