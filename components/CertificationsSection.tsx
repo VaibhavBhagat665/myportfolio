@@ -1,241 +1,321 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { motion, Variants, Easing } from 'framer-motion';
-import * as THREE from 'three';
+import React, { useState } from 'react';
+import { motion, Variants, Easing, AnimatePresence } from 'framer-motion';
 import Section from './ui/Section';
 import { certificationsData } from '../data/certificationsData';
 import { Certification } from '../types';
-import { AcademicCapIcon, ExternalLinkIcon } from './ui/Icons';
+import { AcademicCapIcon, ExternalLinkIcon, StarIcon, CheckCircleIcon } from './ui/Icons';
 
-const ThreeJSCertCard: React.FC<{ cert: Certification; index: number }> = ({ cert, index }) => {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const sceneRef = useRef<THREE.Scene | null>(null);
-  const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
-  const meshRef = useRef<THREE.Mesh | null>(null);
+const CertificationItem: React.FC<{ cert: Certification; index: number }> = ({ cert, index }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    if (!cardRef.current) return;
-
-    // Scene setup
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ 
-      alpha: true, 
-      antialias: true,
-      powerPreference: "high-performance"
-    });
-    
-    renderer.setSize(80, 80);
-    renderer.setClearColor(0x000000, 0);
-    cardRef.current.appendChild(renderer.domElement);
-
-    // Create floating geometric shape
-    const geometry = new THREE.IcosahedronGeometry(0.8, 1);
-    const material = new THREE.MeshPhongMaterial({
-      color: 0x14b8a6,
-      shininess: 100,
-      transparent: true,
-      opacity: 0.8,
-      wireframe: false
-    });
-
-    const mesh = new THREE.Mesh(geometry, material);
-    scene.add(mesh);
-
-    // Add lights
-    const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
-    scene.add(ambientLight);
-
-    const directionalLight = new THREE.DirectionalLight(0x14b8a6, 1);
-    directionalLight.position.set(1, 1, 1);
-    scene.add(directionalLight);
-
-    const pointLight = new THREE.PointLight(0x9333ea, 0.8, 10);
-    pointLight.position.set(-2, 2, 2);
-    scene.add(pointLight);
-
-    camera.position.z = 2;
-
-    sceneRef.current = scene;
-    rendererRef.current = renderer;
-    meshRef.current = mesh;
-
-    // Animation loop
-    const animate = () => {
-      requestAnimationFrame(animate);
-      
-      if (meshRef.current) {
-        meshRef.current.rotation.x += 0.01;
-        meshRef.current.rotation.y += 0.015;
-        
-        if (isHovered) {
-          meshRef.current.scale.setScalar(1.2);
-          meshRef.current.rotation.y += 0.02;
-        } else {
-          meshRef.current.scale.setScalar(1);
-        }
-      }
-      
-      renderer.render(scene, camera);
-    };
-    animate();
-
-    return () => {
-      if (cardRef.current && renderer.domElement) {
-        cardRef.current.removeChild(renderer.domElement);
-      }
-      renderer.dispose();
-      geometry.dispose();
-      material.dispose();
-    };
-  }, [isHovered]);
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    setMousePos({ x: x * 20, y: -y * 20 });
-  };
+  const [isClicked, setIsClicked] = useState(false);
 
   const itemVariants: Variants = {
     hidden: { 
       opacity: 0, 
-      rotateY: -90,
-      scale: 0.8
+      y: 50,
+      scale: 0.9,
+      rotateX: -15
     },
     visible: { 
       opacity: 1, 
-      rotateY: 0,
+      y: 0,
       scale: 1,
+      rotateX: 0,
       transition: { 
-        duration: 0.8, 
-        delay: index * 0.2, 
-        ease: "easeOut" as Easing,
+        duration: 0.6, 
+        delay: index * 0.1, 
+        ease: [0.25, 0.46, 0.45, 0.94],
         type: "spring",
+        damping: 20,
         stiffness: 100
+      }
+    }
+  };
+
+  const cardVariants: Variants = {
+    rest: {
+      scale: 1,
+      rotateY: 0,
+      z: 0,
+      boxShadow: "0 4px 12px rgba(0,0,0,0.15)"
+    },
+    hover: {
+      scale: 1.02,
+      rotateY: 2,
+      z: 50,
+      boxShadow: "0 20px 40px rgba(20, 184, 166, 0.15), 0 0 30px rgba(139, 92, 246, 0.1)",
+      transition: {
+        duration: 0.3,
+        ease: "easeOut"
+      }
+    },
+    tap: {
+      scale: 0.98,
+      transition: { duration: 0.1 }
+    }
+  };
+
+  const glowVariants: Variants = {
+    rest: { opacity: 0, scale: 0.8 },
+    hover: { 
+      opacity: 1, 
+      scale: 1.1,
+      transition: {
+        duration: 0.4,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const iconVariants: Variants = {
+    rest: { 
+      scale: 1, 
+      rotate: 0,
+      filter: "brightness(1)"
+    },
+    hover: { 
+      scale: 1.1, 
+      rotate: 5,
+      filter: "brightness(1.2)",
+      transition: {
+        duration: 0.3,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const contentVariants: Variants = {
+    rest: { x: 0 },
+    hover: { 
+      x: 3,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const badgeVariants: Variants = {
+    rest: { scale: 0, opacity: 0 },
+    hover: { 
+      scale: 1, 
+      opacity: 1,
+      transition: {
+        duration: 0.2,
+        delay: 0.1,
+        type: "spring",
+        stiffness: 300,
+        damping: 20
+      }
+    }
+  };
+
+  const shimmerVariants: Variants = {
+    rest: { x: "-100%" },
+    hover: { 
+      x: "100%",
+      transition: {
+        duration: 0.6,
+        ease: "easeInOut"
       }
     }
   };
 
   return (
     <motion.div
-      ref={cardRef}
       variants={itemVariants}
-      className="relative group perspective-1000"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onMouseMove={handleMouseMove}
-      whileHover={{ 
-        z: 50,
-        transition: { duration: 0.3 }
-      }}
+      initial="hidden"
+      animate="visible"
+      className="relative perspective-1000"
     >
-      {/* Floating particles background */}
-      <div className="absolute inset-0 overflow-hidden rounded-xl pointer-events-none">
-        {[...Array(5)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-accent-teal rounded-full opacity-60"
-            style={{
-              left: `${20 + i * 15}%`,
-              top: `${10 + i * 20}%`,
-            }}
-            animate={{
-              y: [-10, 10, -10],
-              opacity: [0.3, 0.8, 0.3],
-            }}
-            transition={{
-              duration: 2 + i * 0.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Main card with 3D transform */}
+      {/* Glow Effect Background */}
       <motion.div
-        className="relative bg-gradient-to-br from-card-dark via-card-dark/90 to-gray-900/50 p-6 rounded-xl shadow-2xl border border-border-dark backdrop-blur-sm"
+        variants={glowVariants}
+        initial="rest"
+        animate={isHovered ? "hover" : "rest"}
+        className="absolute inset-0 bg-gradient-to-r from-accent-purple/20 via-accent-teal/20 to-indigo-500/20 rounded-xl blur-xl -z-10"
+      />
+      
+      <motion.div
+        variants={cardVariants}
+        initial="rest"
+        animate={isHovered ? "hover" : "rest"}
+        whileTap="tap"
+        onHoverStart={() => setIsHovered(true)}
+        onHoverEnd={() => setIsHovered(false)}
+        onTap={() => setIsClicked(!isClicked)}
+        className="relative bg-gradient-to-br from-card-dark via-card-dark/95 to-card-dark/90 
+                   p-6 rounded-xl border border-border-dark/50
+                   backdrop-blur-sm overflow-hidden cursor-pointer group
+                   before:absolute before:inset-0 
+                   before:bg-gradient-to-r before:from-transparent before:via-white/5 before:to-transparent
+                   before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
         style={{
-          transform: `rotateX(${mousePos.y * 0.5}deg) rotateY(${mousePos.x * 0.5}deg)`,
-          transformStyle: 'preserve-3d',
+          background: `linear-gradient(135deg, 
+            rgba(30, 41, 59, 0.95) 0%, 
+            rgba(51, 65, 85, 0.9) 50%, 
+            rgba(30, 41, 59, 0.95) 100%)`
         }}
-        whileHover={{
-          boxShadow: '0 25px 50px -12px rgba(20, 184, 166, 0.25), 0 0 30px rgba(147, 51, 234, 0.1)',
-          borderColor: '#14b8a6',
-          scale: 1.02,
-        }}
-        transition={{ duration: 0.3 }}
       >
-        {/* Holographic overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent-teal/5 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[200%] transition-transform duration-1000 rounded-xl" />
-        
-        {/* Glow effect */}
-        <div className="absolute inset-0 bg-gradient-to-br from-accent-teal/10 via-transparent to-accent-purple/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        {/* Shimmer Effect */}
+        <motion.div
+          variants={shimmerVariants}
+          initial="rest"
+          animate={isHovered ? "hover" : "rest"}
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12"
+        />
 
-        <div className="relative flex items-start space-x-4 z-10">
-          {/* 3D Icon container */}
-          <div className="flex-shrink-0 relative">
-            {/* Three.js canvas will be appended here */}
-            <div className="w-20 h-20 flex items-center justify-center bg-gradient-to-br from-accent-purple/20 to-accent-teal/20 rounded-lg border border-accent-teal/30 backdrop-blur-sm">
-              <div className="absolute inset-0 bg-gradient-to-br from-accent-teal/10 to-accent-purple/10 rounded-lg" />
+        {/* Top Accent Line */}
+        <motion.div 
+          className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-accent-purple via-accent-teal to-indigo-500"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: isHovered ? 1 : 0.3 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        />
+
+        {/* Verified Badge */}
+        <motion.div
+          variants={badgeVariants}
+          initial="rest"
+          animate={isHovered ? "hover" : "rest"}
+          className="absolute top-4 right-4 bg-gradient-to-r from-green-400 to-emerald-500 
+                     text-white text-xs px-2 py-1 rounded-full flex items-center gap-1
+                     shadow-lg backdrop-blur-sm"
+        >
+          <CheckCircleIcon className="w-3 h-3" />
+          Verified
+        </motion.div>
+
+        <div className="flex items-start space-x-4 relative z-10">
+          {/* Enhanced Icon Container */}
+          <motion.div 
+            variants={iconVariants}
+            initial="rest"
+            animate={isHovered ? "hover" : "rest"}
+            className="flex-shrink-0 relative"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-accent-purple to-accent-teal rounded-lg blur opacity-50" />
+            <div className="relative bg-gradient-to-br from-accent-purple/20 to-accent-teal/20 
+                           p-3 rounded-lg border border-accent-teal/30 backdrop-blur-sm">
+              {cert.icon ? 
+                <cert.icon className="w-8 h-8 text-accent-teal drop-shadow-lg" /> : 
+                <AcademicCapIcon className="w-8 h-8 text-accent-teal drop-shadow-lg" />
+              }
             </div>
             
-            {/* Fallback icon */}
-            <div className="absolute inset-0 flex items-center justify-center text-accent-teal opacity-20">
-              {cert.icon ? <cert.icon className="w-6 h-6" /> : <AcademicCapIcon className="w-6 h-6" />}
-            </div>
-          </div>
+            {/* Floating Stars Animation */}
+            <AnimatePresence>
+              {isHovered && (
+                <>
+                  {[...Array(3)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, scale: 0, x: 0, y: 0 }}
+                      animate={{ 
+                        opacity: [0, 1, 0], 
+                        scale: [0, 1, 0],
+                        x: [0, (i - 1) * 20],
+                        y: [0, -20 - i * 10]
+                      }}
+                      exit={{ opacity: 0, scale: 0 }}
+                      transition={{ 
+                        duration: 1.5, 
+                        delay: i * 0.2,
+                        repeat: Infinity,
+                        repeatDelay: 2
+                      }}
+                      className="absolute top-0 left-1/2 transform -translate-x-1/2"
+                    >
+                      <StarIcon className="w-3 h-3 text-yellow-400" />
+                    </motion.div>
+                  ))}
+                </>
+              )}
+            </AnimatePresence>
+          </motion.div>
 
-          {/* Content */}
-          <div className="flex-1 min-w-0">
+          {/* Enhanced Content */}
+          <motion.div 
+            variants={contentVariants}
+            initial="rest"
+            animate={isHovered ? "hover" : "rest"}
+            className="flex-1 min-w-0"
+          >
             <motion.h3 
-              className="text-lg font-display font-semibold text-text-primary group-hover:text-accent-teal transition-colors duration-300 mb-2"
+              className="text-lg font-display font-semibold bg-gradient-to-r 
+                         from-text-primary via-accent-teal to-text-primary bg-clip-text
+                         text-transparent mb-2 leading-tight"
+              animate={{
+                backgroundPosition: isHovered ? "200% center" : "0% center"
+              }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
               style={{
-                transform: `translateZ(20px)`,
+                backgroundSize: "200% 100%",
+                backgroundImage: `linear-gradient(90deg, 
+                  rgb(241, 245, 249) 0%, 
+                  rgb(20, 184, 166) 50%, 
+                  rgb(241, 245, 249) 100%)`
               }}
             >
               {cert.name}
             </motion.h3>
             
-            <motion.div
-              style={{ transform: `translateZ(10px)` }}
-              className="space-y-1"
-            >
-              <p className="text-sm text-text-secondary/90 font-medium">
-                Issued by: <span className="text-accent-purple">{cert.issuer}</span>
+            <motion.div className="space-y-1 mb-3">
+              <p className="text-sm text-text-secondary flex items-center gap-2">
+                <span className="w-2 h-2 bg-accent-purple rounded-full opacity-60"></span>
+                <span className="font-medium">Issued by:</span> 
+                <span className="text-accent-teal">{cert.issuer}</span>
               </p>
-              <p className="text-xs text-text-secondary/70 flex items-center">
-                <span className="w-2 h-2 bg-accent-teal rounded-full mr-2 animate-pulse" />
-                {cert.date}
+              <p className="text-xs text-text-secondary/70 flex items-center gap-2">
+                <span className="w-2 h-2 bg-accent-teal rounded-full opacity-40"></span>
+                <span className="font-medium">Date:</span> {cert.date}
               </p>
             </motion.div>
 
+            {/* Enhanced Credential Link */}
             {cert.credentialUrl && (
               <motion.a
                 href={cert.credentialUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center text-xs font-medium text-accent-teal hover:text-accent-purple transition-colors mt-3 px-3 py-1 rounded-full bg-accent-teal/10 hover:bg-accent-purple/10 border border-accent-teal/30 hover:border-accent-purple/30 backdrop-blur-sm"
-                style={{ transform: `translateZ(15px)` }}
-                whileHover={{ 
-                  scale: 1.05,
-                  boxShadow: '0 4px 15px rgba(20, 184, 166, 0.3)'
-                }}
+                className="inline-flex items-center gap-2 px-4 py-2 
+                          bg-gradient-to-r from-accent-teal/10 to-accent-purple/10
+                          border border-accent-teal/30 rounded-lg
+                          text-sm text-accent-teal hover:text-white
+                          transition-all duration-300 group/link
+                          hover:bg-gradient-to-r hover:from-accent-teal hover:to-accent-purple
+                          hover:shadow-lg hover:shadow-accent-teal/25"
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <span>View Credential</span>
-                <ExternalLinkIcon className="w-3 h-3 ml-1 group-hover:translate-x-0.5 transition-transform" />
+                <span className="font-medium">View Credential</span>
+                <motion.div
+                  animate={{ x: isHovered ? 3 : 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <ExternalLinkIcon className="w-4 h-4 group-hover/link:rotate-12 transition-transform duration-300" />
+                </motion.div>
               </motion.a>
             )}
-          </div>
+          </motion.div>
         </div>
 
-        {/* Corner accent */}
-        <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-accent-teal/20 to-transparent rounded-tr-xl" />
-        <div className="absolute bottom-0 left-0 w-12 h-12 bg-gradient-to-tr from-accent-purple/20 to-transparent rounded-bl-xl" />
+        {/* Bottom Gradient Line */}
+        <motion.div 
+          className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r 
+                     from-transparent via-accent-teal/50 to-transparent"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: isHovered ? 1 : 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        />
+
+        {/* Corner Decorations */}
+        <div className="absolute top-0 right-0 w-20 h-20 opacity-5">
+          <div className="absolute inset-0 bg-gradient-to-bl from-accent-teal to-transparent rounded-bl-full" />
+        </div>
+        <div className="absolute bottom-0 left-0 w-16 h-16 opacity-5">
+          <div className="absolute inset-0 bg-gradient-to-tr from-accent-purple to-transparent rounded-tr-full" />
+        </div>
       </motion.div>
     </motion.div>
   );
@@ -245,13 +325,36 @@ const CertificationsSection: React.FC<{ id: string }> = ({ id }) => {
   return (
     <Section id={id} title="Learning & Certifications">
       {certificationsData.length > 0 ? (
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-10">
+        <motion.div 
+          className="grid md:grid-cols-2 gap-8 lg:gap-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           {certificationsData.map((cert, index) => (
-            <ThreeJSCertCard key={cert.id} cert={cert} index={index} />
+            <CertificationItem key={cert.id} cert={cert} index={index} />
           ))}
-        </div>
+        </motion.div>
       ) : (
-        <p className="text-center text-text-secondary">No certifications listed yet. Actively pursuing learning opportunities!</p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center py-12"
+        >
+          <div className="relative inline-block">
+            <div className="absolute inset-0 bg-gradient-to-r from-accent-purple/20 to-accent-teal/20 blur-lg rounded-full" />
+            <div className="relative bg-card-dark border border-border-dark/50 rounded-xl p-8 backdrop-blur-sm">
+              <AcademicCapIcon className="w-12 h-12 text-accent-teal mx-auto mb-4 opacity-60" />
+              <p className="text-text-secondary text-lg">
+                No certifications listed yet.
+              </p>
+              <p className="text-accent-teal font-medium mt-2">
+                Actively pursuing learning opportunities!
+              </p>
+            </div>
+          </div>
+        </motion.div>
       )}
     </Section>
   );
