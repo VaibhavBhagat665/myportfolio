@@ -2,9 +2,9 @@
 
 export const userProfile = {
   name: "Vaibhav Bhagat",
-  age: 19,
+  age: 20,
   college: "Indian Institute of Information Technology (IIIT) Sonepat",
-  branch: "Computer Science and Engineering",
+  branch: "Information Technology",
   year: "1st year (2024-2028)",
   
   // Personality Overview
