@@ -15,7 +15,7 @@ export const NAV_LINKS: NavLink[] = [
 export const SOCIAL_LINKS: SocialLink[] = [
   { name: 'GitHub', url: 'https://github.com/vaibhavbhagat665', icon: GithubIcon }, // Replace with actual GitHub
   { name: 'LinkedIn', url: 'https://www.linkedin.com/in/vaibhavbhagat5', icon: LinkedinIcon }, // Replace with actual LinkedIn
-  { name: 'Twitter', url: '#', icon: TwitterIcon }, // Replace with actual Twitter or remove
+  // { name: 'Twitter', url: '#', icon: TwitterIcon }, // Replace with actual Twitter or remove
   { name: 'Email', url: 'mailto:vaibhavbhagat7461@gmail.com', icon: MailIcon }, // Replace with actual Email
 ];
 
