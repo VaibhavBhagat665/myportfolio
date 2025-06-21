@@ -9,7 +9,7 @@ export const certificationsData: Certification[] = [
     issuer: 'Udemy',
     date: 'January 2025', // Or a completion date like '2024-03'
     credentialUrl: 'https://www.udemy.com/certificate/UC-189be3bb-1e33-4874-8c89-430de5db2350/', 
-    logUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7zmzguRUdNPxg-5ixP9ICiFXXiKx1gBAIKQ&s',
+    logoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7zmzguRUdNPxg-5ixP9ICiFXXiKx1gBAIKQ&s',
   },
   {
     id: 'python-data-science',
