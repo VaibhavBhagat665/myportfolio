@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
           ))}
         </div>
         <p className="text-sm text-text-secondary mb-1">
-          Built with <span role="img" aria-label="love">💻</span> by {USER_INFO.name} using React & Tailwind CSS.
+          Built with <span role="img" aria-label="love">💻</span> by {USER_INFO.name}
         </p>
         <p className="text-xs text-text-secondary/70">
           &copy; {currentYear} {USER_INFO.name}. All rights reserved.
