@@ -358,13 +358,17 @@ const HeroSection: React.FC<{ id: string }> = ({ id }) => {
             
             {/* Subtitle */}
             <motion.p
-              variants={descriptionVariants}
-              initial="hidden"
-              animate="visible"
-              className="text-base sm:text-lg md:text-xl text-gray-400 mb-10 max-w-2xl lg:max-w-none leading-relaxed"
-            >
-              1st Year B.Tech I.T at IIIT Sonepat 
-            </motion.p>
+  variants={typingVariants}
+  initial="hidden"
+  animate="visible"
+  className="text-base sm:text-lg md:text-xl text-gray-400 mb-10 max-w-2xl lg:max-w-none leading-relaxed"
+>
+  {"1st Year B.Tech I.T at IIIT Sonepat".split("").map((char, index) => (
+    <motion.span key={index} variants={charVariant}>
+      {char}
+    </motion.span>
+  ))}
+</motion.p>
             
             {/* Description */}
             <motion.p
