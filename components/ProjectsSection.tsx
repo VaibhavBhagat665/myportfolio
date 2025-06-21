@@ -846,7 +846,7 @@ const Projects: React.FC = () => {
           </motion.p>
           
           <motion.a
-            href="https://github.com"
+            href="https://github.com/VaibhavBhagat665.com"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center space-x-3 px-8 py-4 bg-gradient-to-r from-accent-teal to-accent-purple text-white rounded-2xl border border-accent-teal/50 hover:shadow-lg hover:shadow-accent-teal/25 transition-all duration-300 group relative overflow-hidden"
