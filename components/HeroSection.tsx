@@ -357,14 +357,14 @@ const HeroSection: React.FC<{ id: string }> = ({ id }) => {
             </motion.div>
             
             {/* Subtitle */}
-            <motion.h2
-              variants={subtitleVariants}
+            <motion.p
+              variants={descriptionVariants}
               initial="hidden"
               animate="visible"
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-gray-300 mb-4 tracking-wide"
+              className="text-base sm:text-lg md:text-xl text-gray-400 mb-10 max-w-2xl lg:max-w-none leading-relaxed"
             >
-              Crafting AI-Driven Futures
-            </motion.h2>
+              1st Year B.Tech I.T at IIIT Sonepat 
+            </motion.p>
             
             {/* Description */}
             <motion.p
@@ -375,6 +375,15 @@ const HeroSection: React.FC<{ id: string }> = ({ id }) => {
             >
               {USER_INFO.aspirations}
             </motion.p>
+
+            <motion.h2
+  variants={subtitleVariants}
+  initial="hidden"
+  animate="visible"
+  className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-gray-300 mb-4 tracking-wide font-mono"
+>
+  Welcome to my Portfolio 
+</motion.h2>
             
             {/* Buttons */}
             <motion.div
