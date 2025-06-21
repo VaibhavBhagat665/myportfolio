@@ -17,7 +17,7 @@ export const certificationsData: Certification[] = [
     issuer: 'IBM',
     date: 'July 2023',
     credentialUrl: 'https://www.credly.com/badges/4fdfb73e-7676-40fe-87fa-8fb638b40cbd', 
-    logoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7zmzguRUdNPxg-5ixP9ICiFXXiKx1gBAIKQ&s',
+    logoUrl: 'https://static-00.iconduck.com/assets.00/ibm-icon-2048x2048-p5c23kq4.png',
   },
   {
     id: 'foundational-project-management',
