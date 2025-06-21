@@ -20,7 +20,7 @@ const ContactSection: React.FC<{ id: string }> = ({ id }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Basic validation
     if (!formData.name || !formData.email || !formData.message) {
@@ -33,34 +33,42 @@ const ContactSection: React.FC<{ id: string }> = ({ id }) => {
     }
     setError('');
     
-    // Create email content
-    const subject = encodeURIComponent(`Portfolio Contact Form - Message from ${formData.name}`);
-    const body = encodeURIComponent(`
-Hello,
+    try {
+      // Using EmailJS to send email directly from frontend
+      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          service_id: 'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
+          template_id: 'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+          user_id: 'YOUR_PUBLIC_KEY', // Replace with your EmailJS public key
+          template_params: {
+            to_email: 'vaibhavbhagat7461@gmail.com',
+            from_name: formData.name,
+            from_email: formData.email,
+            message: formData.message,
+            reply_to: formData.email,
+          }
+        })
+      });
 
-You have received a new message through your portfolio contact form:
-
-Full Name: ${formData.name}
-Email Address: ${formData.email}
-
-Message:
-${formData.message}
-
----
-This message was sent through your portfolio contact form.
-    `);
-    
-    // Open email client with pre-filled content
-    const mailtoLink = `mailto:vaibhavbhagat7461@gmail.com?subject=${subject}&body=${body}`;
-    window.open(mailtoLink, '_blank');
-    
-    console.log('Form data submitted:', formData);
-    setIsSubmitted(true);
-    // Reset form after a delay (optional)
-    setTimeout(() => {
-      setFormData({ name: '', email: '', message: '' });
-      setIsSubmitted(false);
-    }, 5000);
+      if (response.ok) {
+        console.log('Email sent successfully');
+        setIsSubmitted(true);
+        // Reset form after a delay
+        setTimeout(() => {
+          setFormData({ name: '', email: '', message: '' });
+          setIsSubmitted(false);
+        }, 5000);
+      } else {
+        throw new Error('Failed to send email');
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setError('Failed to send message. Please try again or contact me directly.');
+    }
   };
   
   const inputVariants = {
@@ -198,17 +206,36 @@ This message was sent through your portfolio contact form.
               
               <div className="text-center pt-4">
                 <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-block"
                 >
                   <Button 
                     type="submit" 
                     variant="primary" 
                     size="lg" 
                     rightIcon={<SendIcon className="w-5 h-5"/>}
-                    className="bg-gradient-to-r from-accent-teal to-accent-teal/90 hover:from-accent-teal/90 hover:to-accent-teal shadow-lg hover:shadow-accent-teal/25"
+                    className="relative overflow-hidden bg-gradient-to-r from-accent-teal via-teal-500 to-cyan-500 hover:from-teal-600 hover:via-accent-teal hover:to-teal-400 text-white font-semibold px-8 py-4 rounded-2xl shadow-[0_8px_30px_rgb(20,184,166,0.3)] hover:shadow-[0_12px_40px_rgb(20,184,166,0.4)] transition-all duration-300 group border-2 border-accent-teal/20 hover:border-accent-teal/40"
                   >
-                    Send Message
+                    <span className="relative z-10 flex items-center gap-3">
+                      Send Message
+                      <motion.div
+                        animate={{ x: [0, 3, 0] }}
+                        transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                      >
+                        <SendIcon className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
+                      </motion.div>
+                    </span>
+                    
+                    {/* Animated background gradient */}
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100"
+                      animate={{ x: ['-100%', '100%'] }}
+                      transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+                    />
+                    
+                    {/* Glow effect */}
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent-teal/50 via-teal-400/50 to-cyan-400/50 blur-lg opacity-0 group-hover:opacity-70 transition-opacity duration-300 -z-10" />
                   </Button>
                 </motion.div>
               </div>
