@@ -9,7 +9,7 @@ export const certificationsData: Certification[] = [
     issuer: 'Udemy',
     date: 'January 2025', // Or a completion date like '2024-03'
     credentialUrl: 'https://www.udemy.com/certificate/UC-189be3bb-1e33-4874-8c89-430de5db2350/', 
-    logUrl: 'https://brandfetch.com/udemy.com?view=library&library=default&collection=logos&asset=idZkl0YU8V&utm_source=https%253A%252F%252Fbrandfetch.com%252Fudemy.com&utm_medium=copyAction&utm_campaign=brandPageReferral',
+    logUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7zmzguRUdNPxg-5ixP9ICiFXXiKx1gBAIKQ&s',
   },
   {
     id: 'python-data-science',
@@ -25,7 +25,7 @@ export const certificationsData: Certification[] = [
     issuer: 'Google',
     date: 'June 2025',
     credentialUrl: 'https://www.coursera.org/account/accomplishments/verify/TD8QEM1CH7I6?utm_source%3Dandroid%26utm_medium%3Dcertificate%26utm_content%3Dcert_image%26utm_campaign%3Dsharing_cta%26utm_product%3Dcourse', 
-    logoUrl: 'https://brandfetch.com/google.com?view=library&library=default&collection=logos&asset=idTH30KyjO&utm_source=https%253A%252F%252Fbrandfetch.com%252Fgoogle.com&utm_medium=copyAction&utm_campaign=brandPageReferral',
+    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png',
   },
   {
     id: 'sql-intermediate',
@@ -33,7 +33,7 @@ export const certificationsData: Certification[] = [
     issuer: 'HackerRank',
     date: 'July 2023',
     credentialUrl: 'https://www.hackerrank.com/certificates/251aca2f6583', 
-    logoUrl: 'https://brandfetch.com/google.com?view=library&library=default&collection=logos&asset=idTH30KyjO&utm_source=https%253A%252F%252Fbrandfetch.com%252Fgoogle.com&utm_medium=copyAction&utm_campaign=brandPageReferral',
+    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/40/HackerRank_Icon-1000px.png',
   },
   {
     id: 'web-dev-bootcamp',
@@ -41,7 +41,7 @@ export const certificationsData: Certification[] = [
     issuer: 'Udemy',
     date: 'Ongoing',
     // credentialUrl: '#', 
-    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/40/HackerRank_Icon-1000px.png',
+    logoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7zmzguRUdNPxg-5ixP9ICiFXXiKx1gBAIKQ&s',
   },
   
   
