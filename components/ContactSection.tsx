@@ -46,9 +46,9 @@ const ContactSection: React.FC<{ id: string }> = ({ id }) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          service_id: 'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-          template_id: 'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
-          user_id: 'YOUR_PUBLIC_KEY', // Replace with your EmailJS public key
+          service_id: 'service_u0t18t5', // Replace with your EmailJS service ID
+          template_id: 'template_4oota31', // Replace with your EmailJS template ID
+          user_id: 'bW8aOOtx8glmPdyqu', // Replace with your EmailJS public key
           template_params: {
             to_email: 'vaibhavbhagat7461@gmail.com',
             from_name: formData.name,
