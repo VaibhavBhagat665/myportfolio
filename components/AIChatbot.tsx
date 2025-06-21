@@ -121,7 +121,7 @@ const AIChatbot: React.FC = () => {
     ]
   },
 
-  learningJourney: 'Vaibhav's journey started with Python and C++ in school, followed by hands-on experiments in ML using scikit-learn. He quickly moved to creating regression and classification projects, diving into Q-learning for curiosity. Realizing the value of end-to-end dev, he added React and Firebase to his stack. He’s now exploring GenAI and context-aware assistants. He learns fast, applies faster.',
+  learningJourney: 'Vaibhav's journey started with Python and C++ in school, followed by hands-on experiments in ML using scikit-learn. He quickly moved to creating regression and classification projects, diving into Q-learning for curiosity. Realizing the value of end-to-end dev, he added React and Firebase to his stack. He's now exploring GenAI and context-aware assistants. He learns fast, applies faster.',
 
   projects: [
     {
@@ -330,75 +330,71 @@ const AIChatbot: React.FC = () => {
 
   return (
     <>
-      {/* Enhanced 3D Floating Action Button */}
-      <motion.button
-        ref={buttonRef}
-        onClick={toggleChat}
-        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[100] group"
-        style={{
-          perspective: 1000,
-          transformStyle: 'preserve-3d',
-        }}
-        onMouseMove={handleButtonMouseMove}
-        onMouseLeave={handleButtonMouseLeave}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        aria-label="Toggle AI Chatbot"
-      >
-        {/* Holographic glow */}
-        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-accent-purple via-accent-teal to-accent-purple blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-500 scale-150"></div>
-        
-        {/* Floating particles around button - hidden on mobile for performance */}
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-accent-teal rounded-full opacity-40 hidden sm:block"
+      {/* Enhanced 3D Floating Action Button - Hidden on mobile when chat is open */}
+      <AnimatePresence>
+        {!isOpen && (
+          <motion.button
+            ref={buttonRef}
+            onClick={toggleChat}
+            className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[100] group"
             style={{
-              left: `${50 + Math.cos(i * 60 * Math.PI / 180) * 40}px`,
-              top: `${50 + Math.sin(i * 60 * Math.PI / 180) * 40}px`,
+              perspective: 1000,
+              transformStyle: 'preserve-3d',
             }}
-            animate={{
-              scale: [0.5, 1.5, 0.5],
-              opacity: [0.2, 0.8, 0.2],
-            }}
-            transition={{
-              duration: 2,
-              delay: i * 0.3,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
-
-        {/* Main button with 3D effect */}
-        <motion.div
-          className="relative bg-gradient-to-br from-accent-purple to-accent-teal text-white p-3 sm:p-4 rounded-full shadow-2xl border border-accent-purple/30"
-          style={{
-            rotateX,
-            rotateY,
-            transformStyle: 'preserve-3d',
-          }}
-        >
-          <motion.div style={{ translateZ: 20 }}>
-            <ChatBubbleIcon className="w-6 h-6 sm:w-8 sm:h-8" />
-          </motion.div>
-          
-          {/* Inner glow */}
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-accent-purple/50 to-accent-teal/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        </motion.div>
-
-        {/* Notification badge */}
-        {!isOpen && messages.length > 1 && (
-          <motion.div
-            className="absolute -top-2 -right-2 w-5 h-5 sm:w-6 sm:h-6 bg-red-500 text-white text-xs rounded-full flex items-center justify-center border-2 border-white"
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ type: "spring", stiffness: 300 }}
+            onMouseMove={handleButtonMouseMove}
+            onMouseLeave={handleButtonMouseLeave}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+            aria-label="Toggle AI Chatbot"
           >
-            !
-          </motion.div>
+            {/* Holographic glow */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-accent-purple via-accent-teal to-accent-purple blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-500 scale-150"></div>
+            
+            {/* Floating particles around button - hidden on mobile for performance */}
+            {[...Array(6)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-2 h-2 bg-accent-teal rounded-full opacity-40 hidden sm:block"
+                style={{
+                  left: `${50 + Math.cos(i * 60 * Math.PI / 180) * 40}px`,
+                  top: `${50 + Math.sin(i * 60 * Math.PI / 180) * 40}px`,
+                }}
+                animate={{
+                  scale: [0.5, 1.5, 0.5],
+                  opacity: [0.2, 0.8, 0.2],
+                }}
+                transition={{
+                  duration: 2,
+                  delay: i * 0.3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+            ))}
+
+            {/* Main button with 3D effect */}
+            <motion.div
+              className="relative bg-gradient-to-br from-accent-purple to-accent-teal text-white p-3 sm:p-4 rounded-full shadow-2xl border border-accent-purple/30"
+              style={{
+                rotateX,
+                rotateY,
+                transformStyle: 'preserve-3d',
+              }}
+            >
+              <motion.div style={{ translateZ: 20 }}>
+                <ChatBubbleIcon className="w-6 h-6 sm:w-8 sm:h-8" />
+              </motion.div>
+              
+              {/* Inner glow */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-accent-purple/50 to-accent-teal/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </motion.div>
+          </motion.button>
         )}
-      </motion.button>
+      </AnimatePresence>
 
       <AnimatePresence>
         {isOpen && (
