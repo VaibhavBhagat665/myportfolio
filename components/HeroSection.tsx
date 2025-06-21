@@ -7,7 +7,7 @@ import { USER_INFO, NAV_LINKS } from '../constants';
 import { FloatingParticlesBackground } from './ui/FloatingParticle';
 import { ArrowDownIcon, BriefcaseIcon } from './ui/Icons';
 
-// Enhanced 3D Software Development Icon Component
+// Enhanced 3D Software Development Icon Component with Diverse Revolving Elements
 const CodeIcon3D: React.FC = () => {
   return (
     <motion.div
@@ -42,12 +42,26 @@ const CodeIcon3D: React.FC = () => {
         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
       />
       
-      {/* Main container with enhanced 3D effect */}
-      <div 
+      {/* Tertiary inner glow */}
+      <motion.div
+        className="absolute inset-4 rounded-full bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-violet-500/10 blur-md"
+        animate={{ rotate: 360 }}
+        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+      />
+      
+      {/* Main container with enhanced 3D effect and rotation */}
+      <motion.div 
         className="relative w-full h-full bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-violet-400/30 shadow-2xl shadow-violet-400/20 overflow-hidden"
         style={{
           transformStyle: 'preserve-3d',
           transform: 'rotateX(5deg) rotateY(-5deg)'
+        }}
+        animate={{ rotateZ: [0, 90, 180, 270, 360] }}
+        transition={{ 
+          duration: 8, 
+          repeat: Infinity, 
+          ease: "easeInOut",
+          times: [0, 0.25, 0.5, 0.75, 1]
         }}
       >
         {/* Enhanced background pattern */}
@@ -141,30 +155,98 @@ const CodeIcon3D: React.FC = () => {
         <div className="absolute top-0 right-0 w-4 h-4 md:w-6 md:h-6 border-r-2 border-t-2 border-violet-400/60 rounded-tr-lg" />
         <div className="absolute bottom-0 left-0 w-4 h-4 md:w-6 md:h-6 border-l-2 border-b-2 border-violet-400/60 rounded-bl-lg" />
         <div className="absolute bottom-0 right-0 w-4 h-4 md:w-6 md:h-6 border-r-2 border-b-2 border-violet-400/60 rounded-br-lg" />
-      </div>
+      </motion.div>
       
-      {/* Enhanced orbiting elements with more variety */}
+      {/* Primary orbit - Tech symbols */}
       <motion.div
         className="absolute inset-0 pointer-events-none"
         animate={{ rotate: 360 }}
         transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
       >
-        <div className="absolute -top-3 left-1/2 w-2 h-2 md:w-3 md:h-3 bg-purple-400 rounded-full transform -translate-x-1/2" />
-        <div className="absolute top-1/2 -right-3 w-1.5 h-1.5 md:w-2 md:h-2 bg-indigo-400 rounded-full transform -translate-y-1/2" />
-        <div className="absolute -bottom-3 left-1/2 w-2 h-2 md:w-3 md:h-3 bg-pink-400 rounded-full transform -translate-x-1/2" />
-        <div className="absolute top-1/2 -left-3 w-1.5 h-1.5 md:w-2 md:h-2 bg-cyan-400 rounded-full transform -translate-y-1/2" />
+        <div className="absolute -top-4 left-1/2 w-3 h-3 md:w-4 md:h-4 bg-purple-400 rounded-full transform -translate-x-1/2 flex items-center justify-center">
+          <span className="text-white text-xs font-mono">λ</span>
+        </div>
+        <div className="absolute top-1/2 -right-4 w-2.5 h-2.5 md:w-3 md:h-3 bg-indigo-400 rounded-full transform -translate-y-1/2 flex items-center justify-center">
+          <span className="text-white text-xs font-mono">∞</span>
+        </div>
+        <div className="absolute -bottom-4 left-1/2 w-3 h-3 md:w-4 md:h-4 bg-pink-400 rounded-full transform -translate-x-1/2 flex items-center justify-center">
+          <span className="text-white text-xs font-mono">π</span>
+        </div>
+        <div className="absolute top-1/2 -left-4 w-2.5 h-2.5 md:w-3 md:h-3 bg-cyan-400 rounded-full transform -translate-y-1/2 flex items-center justify-center">
+          <span className="text-white text-xs font-mono">Σ</span>
+        </div>
       </motion.div>
       
-      {/* Counter-rotating secondary orbit */}
+      {/* Secondary orbit - Code elements */}
       <motion.div
         className="absolute inset-0 pointer-events-none"
         animate={{ rotate: -360 }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
       >
-        <div className="absolute top-1/4 -right-1 w-1 h-1 bg-violet-300 rounded-full" />
-        <div className="absolute bottom-1/4 -left-1 w-1 h-1 bg-purple-300 rounded-full" />
-        <div className="absolute -top-1 left-1/4 w-1 h-1 bg-indigo-300 rounded-full" />
-        <div className="absolute -bottom-1 right-1/4 w-1 h-1 bg-pink-300 rounded-full" />
+        <div className="absolute -top-6 left-1/4 w-2 h-2 md:w-3 md:h-3 bg-violet-300 rounded-full flex items-center justify-center">
+          <span className="text-white text-xs font-mono">&</span>
+        </div>
+        <div className="absolute top-1/4 -right-6 w-2 h-2 md:w-3 md:h-3 bg-purple-300 rounded-full flex items-center justify-center">
+          <span className="text-white text-xs font-mono">@</span>
+        </div>
+        <div className="absolute -bottom-6 right-1/4 w-2 h-2 md:w-3 md:h-3 bg-indigo-300 rounded-full flex items-center justify-center">
+          <span className="text-white text-xs font-mono">%</span>
+        </div>
+        <div className="absolute bottom-1/4 -left-6 w-2 h-2 md:w-3 md:h-3 bg-pink-300 rounded-full flex items-center justify-center">
+          <span className="text-white text-xs font-mono">#</span>
+        </div>
+      </motion.div>
+      
+      {/* Tertiary orbit - Binary elements */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        animate={{ rotate: 360 }}
+        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+      >
+        <div className="absolute -top-2 left-1/3 w-1.5 h-1.5 bg-cyan-200 rounded-full flex items-center justify-center">
+          <span className="text-slate-800 text-xs font-mono font-bold">1</span>
+        </div>
+        <div className="absolute top-1/3 -right-2 w-1.5 h-1.5 bg-purple-200 rounded-full flex items-center justify-center">
+          <span className="text-slate-800 text-xs font-mono font-bold">0</span>
+        </div>
+        <div className="absolute -bottom-2 right-1/3 w-1.5 h-1.5 bg-indigo-200 rounded-full flex items-center justify-center">
+          <span className="text-slate-800 text-xs font-mono font-bold">1</span>
+        </div>
+        <div className="absolute bottom-1/3 -left-2 w-1.5 h-1.5 bg-pink-200 rounded-full flex items-center justify-center">
+          <span className="text-slate-800 text-xs font-mono font-bold">0</span>
+        </div>
+      </motion.div>
+      
+      {/* Quaternary orbit - AI/ML symbols */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        animate={{ rotate: -360 }}
+        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+      >
+        <div className="absolute -top-8 right-1/3 w-2.5 h-2.5 bg-gradient-to-r from-purple-400 to-violet-400 rounded-full flex items-center justify-center">
+          <span className="text-white text-xs font-mono">AI</span>
+        </div>
+        <div className="absolute top-2/3 -right-8 w-2.5 h-2.5 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full flex items-center justify-center">
+          <span className="text-white text-xs font-mono">ML</span>
+        </div>
+        <div className="absolute -bottom-8 left-1/3 w-2.5 h-2.5 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full flex items-center justify-center">
+          <span className="text-white text-xs font-mono">NN</span>
+        </div>
+        <div className="absolute bottom-2/3 -left-8 w-2.5 h-2.5 bg-gradient-to-r from-cyan-400 to-indigo-400 rounded-full flex items-center justify-center">
+          <span className="text-white text-xs font-mono">DL</span>
+        </div>
+      </motion.div>
+      
+      {/* Fast inner orbit - Simple dots */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        animate={{ rotate: 360 }}
+        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+      >
+        <div className="absolute top-1/6 left-1/2 w-1 h-1 bg-violet-400 rounded-full transform -translate-x-1/2" />
+        <div className="absolute top-1/2 right-1/6 w-1 h-1 bg-purple-400 rounded-full transform -translate-y-1/2" />
+        <div className="absolute bottom-1/6 left-1/2 w-1 h-1 bg-indigo-400 rounded-full transform -translate-x-1/2" />
+        <div className="absolute top-1/2 left-1/6 w-1 h-1 bg-pink-400 rounded-full transform -translate-y-1/2" />
       </motion.div>
     </motion.div>
   );
@@ -235,8 +317,8 @@ const HeroSection: React.FC<{ id: string }> = ({ id }) => {
             <CodeIcon3D />
           </div>
           
-          {/* Right Side - Text Content (Left-aligned) */}
-          <div className="flex-1 text-center lg:text-left lg:pt-8">
+          {/* Right Side - Text Content (Right-aligned) */}
+          <div className="flex-1 text-center lg:text-right lg:pt-8">
             {/* Main Name - Left aligned */}
             <motion.div
               variants={nameVariants}
@@ -296,7 +378,7 @@ const HeroSection: React.FC<{ id: string }> = ({ id }) => {
             
             {/* Buttons */}
             <motion.div
-              className="flex flex-col sm:flex-row justify-center lg:justify-start items-center gap-4"
+              className="flex flex-col sm:flex-row justify-center lg:justify-end items-center gap-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 1.5 }}
