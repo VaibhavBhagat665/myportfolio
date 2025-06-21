@@ -358,13 +358,17 @@ const HeroSection: React.FC<{ id: string }> = ({ id }) => {
             
             {/* Subtitle */}
             <motion.p
-              variants={descriptionVariants}
-              initial="hidden"
-              animate="visible"
-              className="text-base sm:text-lg md:text-xl text-gray-400 mb-10 max-w-2xl lg:max-w-none leading-relaxed"
-            >
-              1st Year B.Tech I.T at IIIT Sonepat 
-            </motion.p>
+  variants={typingContainer}
+  initial="hidden"
+  animate="visible"
+  className="text-base sm:text-lg md:text-xl text-gray-400 mb-10 max-w-2xl lg:max-w-none leading-relaxed"
+>
+  {"1st Year B.Tech I.T at IIIT Sonepat".split("").map((char, index) => (
+    <motion.span key={index} variants={charFade}>
+      {char}
+    </motion.span>
+  ))}
+</motion.p>
             
             {/* Description */}
             <motion.p
@@ -404,6 +408,20 @@ const HeroSection: React.FC<{ id: string }> = ({ id }) => {
       </div>
     </Section>
   );
+};
+
+const typingContainer = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.04
+    }
+  }
+};
+
+const charFade = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 }
 };
 
 export default HeroSection;
