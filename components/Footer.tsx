@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
       viewport={{ once: true }}
       transition={{ duration: 0.8, delay: 0.2 }}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+{/*       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-center space-x-6 mb-6">
           {SOCIAL_LINKS.map((link) => (
             <motion.a
@@ -30,9 +30,9 @@ const Footer: React.FC = () => {
               <link.icon className="w-6 h-6" />
             </motion.a>
           ))}
-        </div>
+        </div> */}
         <p className="text-sm text-text-secondary mb-1">
-          Built with <span role="img" aria-label="love">❤️</span> by {USER_INFO.name} using React & Tailwind CSS.
+          Built with <span role="img" aria-label="love">💻</span> by {USER_INFO.name} using React & Tailwind CSS.
         </p>
         <p className="text-xs text-text-secondary/70">
           &copy; {currentYear} {USER_INFO.name}. All rights reserved.
