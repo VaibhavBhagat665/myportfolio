@@ -66,10 +66,11 @@ const AIChatbot: React.FC = () => {
       
       const context = `
         You are a friendly and helpful AI assistant for Vaibhav Bhagat's personal portfolio website. 
-        Your goal is to answer questions about Vaibhav based on the information provided below. 
-        Be concise and professional. If a question is outside the scope of this information, politely state that you can only provide details based on his portfolio.
-        You can also guide users to different sections of the website if their query implies it (e.g., "Tell me about his projects" -> "You can find more details in the Projects section.").
-  export const userProfile = {
+Your goal is to answer questions about Vaibhav naturally and conversationally, as if you know him personally. 
+Be concise, professional, and authentic. Avoid phrases like "based on the information provided" or "according to his portfolio" - just speak naturally about him.
+You can guide users to different sections of the website when relevant (e.g., "You should check out his Projects section for more details").
+
+export const userProfile = {
   name: "Vaibhav Bhagat",
   age: 20,
   college: "Indian Institute of Information Technology (IIIT) Sonepat",
@@ -121,84 +122,98 @@ const AIChatbot: React.FC = () => {
     ]
   },
 
-  learningJourney: 'Vaibhav's journey started with Python and C++ in school, followed by hands-on experiments in ML using scikit-learn. He quickly moved to creating regression and classification projects, diving into Q-learning for curiosity. Realizing the value of end-to-end dev, he added React and Firebase to his stack. He's now exploring GenAI and context-aware assistants. He learns fast, applies faster.',
+  strengths: [
+    "Quick learner who adapts fast to new technologies",
+    "Strong problem-solving abilities under pressure",
+    "Excellent communication skills, both technical and non-technical",
+    "Natural leadership and project management instincts",
+    "Builds practical, real-world focused projects",
+    "Self-motivated and takes ownership of work"
+  ],
+
+  areasForGrowth: [
+    "Sometimes spends too much time perfecting small details - he really cares about quality outcomes but is learning to balance perfection with meeting deadlines and iterating on early versions",
+    "As a first-year student, he's still building real-world professional experience through internships and research opportunities. He's focused on developing strong fundamentals through practical projects and is actively seeking professional opportunities",
+    "Tends to take on a lot of responsibility in projects because he likes having control over outcomes. He's working on improving collaboration and delegation skills, especially for larger cross-functional projects, using tools like project boards and better team communication"
+  ],
+
+  learningJourney: 'Vaibhav started with Python and C++ in school, then got hands-on with ML using scikit-learn. He quickly moved into regression and classification projects, and even explored Q-learning out of curiosity. Realizing the value of end-to-end development, he added React and Firebase to his toolkit. Now he's diving into GenAI and context-aware assistants. He learns fast and applies even faster.',
 
   projects: [
     {
-    id: 'talevo',
-    title: 'Talevo - Interactive Storytelling WebApp',
-    description: '\nBuilt Talevo, a web platform for reading and exploring interactive, choice-driven stories. Features immersive visuals and replayable story paths. Developed for experimentation in UI/UX design, storytelling logic, and dynamic user interaction.',
-    stack: ['HTML', 'CSS', 'JavaScript', 'Firebase','Firestore'],
-    imageUrl: 'https://iili.io/3QjTfpf.png',
-    githubUrl: 'https://github.com/VaibhavBhagat665/talevo-2',
-    demoUrl: 'https://talevo-2.vercel.app',
-    year: 2024,
-  },
-  {
-    id: 'mindsetu',
-    title: 'Mindsetu - Mental Wellness Platform for Students',
-    description: '\nBuilt a full-stack web app for college mental health support during my first hackathon. MindSetu features role-based dashboards for students, teachers, and admins; mood tracking; assignment insights; AI chatbot support; and data privacy.',
-    stack: ['React', 'Tailwind CSS', 'TypeScript', 'Express', 'Node.js', 'Firebase'],
-    imageUrl: 'https://iili.io/FxsR8f1.png',
-    demoUrl: 'https://mindsetu-b0db5.web.app/', 
-    year: 2023,
-  },
+      id: 'talevo',
+      title: 'Talevo - Interactive Storytelling WebApp',
+      description: 'Built Talevo, a web platform for reading and exploring interactive, choice-driven stories. Features immersive visuals and replayable story paths. Developed for experimentation in UI/UX design, storytelling logic, and dynamic user interaction.',
+      stack: ['HTML', 'CSS', 'JavaScript', 'Firebase','Firestore'],
+      imageUrl: 'https://iili.io/3QjTfpf.png',
+      githubUrl: 'https://github.com/VaibhavBhagat665/talevo-2',
+      demoUrl: 'https://talevo-2.vercel.app',
+      year: 2024,
+    },
+    {
+      id: 'mindsetu',
+      title: 'Mindsetu - Mental Wellness Platform for Students',
+      description: 'Built a full-stack web app for college mental health support during his first hackathon. MindSetu features role-based dashboards for students, teachers, and admins; mood tracking; assignment insights; AI chatbot support; and data privacy.',
+      stack: ['React', 'Tailwind CSS', 'TypeScript', 'Express', 'Node.js', 'Firebase'],
+      imageUrl: 'https://iili.io/FxsR8f1.png',
+      demoUrl: 'https://mindsetu-b0db5.web.app/', 
+      year: 2023,
+    },
     {
       name: "Tic-Tac-Toe Q-learning Agent",
-      description: "Implemented a self-learning Tic-Tac-Toe bot that updates its strategy through trial and error. It helped Vaibhav grasp how RL agents behave and how state-action value pairs evolve.",
+      description: "Implemented a self-learning Tic-Tac-Toe bot that updates its strategy through trial and error. It helped him understand how RL agents behave and how state-action value pairs evolve.",
       stack: ["Python"]
     },
     {
       name: "Real Estate Price Prediction",
-      description: "Designed a regression-based ML model that predicts housing prices based on features like location, area, and condition. This polished his data cleaning, feature encoding, and model evaluation skills.",
+      description: "Designed a regression-based ML model that predicts housing prices based on features like location, area, and condition. This project polished his data cleaning, feature encoding, and model evaluation skills.",
       stack: ["Python", "Scikit-learn"]
     }
   ],
 
   certifications: [
     {
-    id: 'ml-a-z-udemy',
-    name: 'Machine Learning A-Z™: AI, Python & R + ChatGPT Bonus',
-    issuer: 'Udemy',
-    date: 'January 2025', // Or a completion date like '2024-03'
-    credentialUrl: 'https://www.udemy.com/certificate/UC-189be3bb-1e33-4874-8c89-430de5db2350/', 
-    logoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7zmzguRUdNPxg-5ixP9ICiFXXiKx1gBAIKQ&s',
-  },
-  {
-    id: 'python-data-science',
-    name: 'Python for Data Science',
-    issuer: 'IBM',
-    date: 'July 2023',
-    credentialUrl: 'https://www.credly.com/badges/4fdfb73e-7676-40fe-87fa-8fb638b40cbd', 
-    logoUrl: 'https://static-00.iconduck.com/assets.00/ibm-icon-2048x2048-p5c23kq4.png',
-  },
-  {
-    id: 'foundational-project-management',
-    name: 'Foundations of Project Management',
-    issuer: 'Google',
-    date: 'June 2025',
-    credentialUrl: 'https://www.coursera.org/account/accomplishments/verify/TD8QEM1CH7I6?utm_source%3Dandroid%26utm_medium%3Dcertificate%26utm_content%3Dcert_image%26utm_campaign%3Dsharing_cta%26utm_product%3Dcourse', 
-    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png',
-  },
-  {
-    id: 'sql-intermediate',
-    name: 'SQL Intermediate Certification',
-    issuer: 'HackerRank',
-    date: 'July 2023',
-    credentialUrl: 'https://www.hackerrank.com/certificates/251aca2f6583', 
-    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/40/HackerRank_Icon-1000px.png',
-  },
-  {
-    id: 'web-dev-bootcamp',
-    name: 'The Complete Web Development Bootcamp',
-    issuer: 'Udemy',
-    date: 'Ongoing',
-    // credentialUrl: '#', 
-    logoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7zmzguRUdNPxg-5ixP9ICiFXXiKx1gBAIKQ&s',
-  },
+      id: 'ml-a-z-udemy',
+      name: 'Machine Learning A-Z™: AI, Python & R + ChatGPT Bonus',
+      issuer: 'Udemy',
+      date: 'January 2025',
+      credentialUrl: 'https://www.udemy.com/certificate/UC-189be3bb-1e33-4874-8c89-430de5db2350/', 
+      logoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7zmzguRUdNPxg-5ixP9ICiFXXiKx1gBAIKQ&s',
+    },
+    {
+      id: 'python-data-science',
+      name: 'Python for Data Science',
+      issuer: 'IBM',
+      date: 'July 2023',
+      credentialUrl: 'https://www.credly.com/badges/4fdfb73e-7676-40fe-87fa-8fb638b40cbd', 
+      logoUrl: 'https://static-00.iconduck.com/assets.00/ibm-icon-2048x2048-p5c23kq4.png',
+    },
+    {
+      id: 'foundational-project-management',
+      name: 'Foundations of Project Management',
+      issuer: 'Google',
+      date: 'June 2025',
+      credentialUrl: 'https://www.coursera.org/account/accomplishments/verify/TD8QEM1CH7I6?utm_source%3Dandroid%26utm_medium%3Dcertificate%26utm_content%3Dcert_image%26utm_campaign%3Dsharing_cta%26utm_product%3Dcourse', 
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png',
+    },
+    {
+      id: 'sql-intermediate',
+      name: 'SQL Intermediate Certification',
+      issuer: 'HackerRank',
+      date: 'July 2023',
+      credentialUrl: 'https://www.hackerrank.com/certificates/251aca2f6583', 
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/40/HackerRank_Icon-1000px.png',
+    },
+    {
+      id: 'web-dev-bootcamp',
+      name: 'The Complete Web Development Bootcamp',
+      issuer: 'Udemy',
+      date: 'Ongoing',
+      logoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7zmzguRUdNPxg-5ixP9ICiFXXiKx1gBAIKQ&s',
+    },
   ],
 
-  aspirations: 'Vaibhav is aiming for AI/ML research internships or product-based internships that involve real problem-solving, ML/AI pipelines, or GenAI integrations. Long-term, he wants to contribute to building intelligent systems that support human creativity and cognition — especially in learning tools, automation, or storytelling systems. He is also open for SDE intern roles.',
+  aspirations: 'Vaibhav is targeting AI/ML research internships or product-based internships that involve real problem-solving, ML/AI pipelines, or GenAI integrations. Long-term, he wants to contribute to building intelligent systems that support human creativity and cognition - especially in learning tools, automation, or storytelling systems. He is also open to SDE intern roles.',
 
   preferences: {
     tone: "Confident but not arrogant, honest but friendly",
@@ -242,17 +257,10 @@ const AIChatbot: React.FC = () => {
   }
 };
 
-        Skills:
-        ${skillsData.map(skill => `- ${skill.name} (${skill.category})`).join('\n')}
-
-        Projects:
-        ${projectsData.map(project => `- ${project.title}: ${project.description.substring(0,100)}... (Tech: ${project.stack.join(', ')})`).join('\n')}
-
-        Certifications:
-        ${certificationsData.map(cert => `- ${cert.name} from ${cert.issuer} (${cert.date})`).join('\n')}
-    Important: Do not use markdown symbols like asterisks (**) or backticks () in your responses. Write everything as plain text, in a natural and readable way.
-
-      `;
+Important: Do not use markdown symbols like asterisks (**) or backticks () in your responses. 
+Write everything as plain text, in a natural and readable way.
+Speak about Vaibhav as if you know him personally, not as if you're reading from a document.
+        `;
 
       chatSessionRef.current = ai.chats.create({
         model: 'gemini-2.5-flash-preview-04-17',
