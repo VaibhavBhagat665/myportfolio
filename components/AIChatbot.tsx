@@ -251,6 +251,7 @@ const AIChatbot: React.FC = () => {
         Certifications:
         ${certificationsData.map(cert => `- ${cert.name} from ${cert.issuer} (${cert.date})`).join('\n')}
     Important: Do not use markdown symbols like asterisks (**) or backticks () in your responses. Write everything as plain text, in a natural and readable way.
+
       `;
 
       chatSessionRef.current = ai.chats.create({
