@@ -133,7 +133,7 @@ export const userProfile = {
 
   areasForGrowth: [
     "Sometimes spends too much time perfecting small details - he really cares about quality outcomes but is learning to balance perfection with meeting deadlines and iterating on early versions",
-    "As a first-year student, he's still building real-world professional experience through internships and research opportunities. He's focused on developing strong fundamentals through practical projects and is actively seeking professional opportunities",
+    "As a first-year student, he's still focused on developing strong fundamentals through practical projects and is actively seeking professional opportunities",
     "Tends to take on a lot of responsibility in projects because he likes having control over outcomes. He's working on improving collaboration and delegation skills, especially for larger cross-functional projects, using tools like project boards and better team communication"
   ],
 
