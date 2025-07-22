@@ -261,17 +261,10 @@ Write everything as plain text, in a natural and readable way.
 Speak about Vaibhav as if you know him personally, not as if you're reading from a document.
         `;
 
-      try {
-        chatSessionRef.current = await ai.chats.create({
-          model: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent',
-          config: { systemInstruction: context },
-        });
-      } catch (error) {
-        if (error.code === 429) {
-          setTimeout(() => {
-          }, 10000);
-        }
-      }
+      chatSessionRef.current = ai.chats.create({
+        model: 'gemini-pro',
+        config: { systemInstruction: context },
+      });
 
 
       setMessages([
