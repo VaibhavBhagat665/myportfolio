@@ -9,7 +9,7 @@ import ProjectsSection from './components/ProjectsSection';
 import CertificationsSection from './components/CertificationsSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
-import AIChatbot from './components/AIChatbot'; // Import the chatbot
+import AIChatbot from './components/AIChatbot'; 
 import { NAV_LINKS } from './constants';
 // import TechShowcase3D from './components/TechShowcase3D';
 
@@ -30,7 +30,6 @@ const App: React.FC = () => {
             <HeroSection id={NAV_LINKS[0].id} />
             <AboutSection id={NAV_LINKS[1].id} />
             <SkillsSection id={NAV_LINKS[2].id} />
-            {/* <TechShowcase3D id="tech-showcase" /> */}
             <ProjectsSection id={NAV_LINKS[3].id} />
             <CertificationsSection id={NAV_LINKS[4].id} />
             <ContactSection id={NAV_LINKS[5].id} />
@@ -38,7 +37,7 @@ const App: React.FC = () => {
         </AnimatePresence>
       </main>
       <Footer />
-      <AIChatbot /> {/* Add the chatbot component here */}
+      <AIChatbot /> 
     </div>
   );
 };
