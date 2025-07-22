@@ -4,7 +4,6 @@ import Section from './ui/Section';
 import { SkillCategory } from '../types';
 import { CodeIcon, BrainIcon, WrenchIcon, AcademicCapIcon } from './ui/Icons';
 
-// Updated skills data structure
 const skillsData = {
   [SkillCategory.LANGUAGES]: [
     { id: 1, name: 'Python', branch: 'Core Languages' },
@@ -114,7 +113,6 @@ const SkillCard: React.FC<{
           boxShadow: "0px 15px 30px rgba(0,0,0,0.4)",
         }}
       >
-        {/* Skill name */}
         <motion.div 
           className="text-center"
           style={{ translateZ: 10 }}
@@ -124,7 +122,6 @@ const SkillCard: React.FC<{
           </span>
         </motion.div>
 
-        {/* Glow effect */}
         <div className={`absolute inset-0 rounded-lg bg-gradient-to-r ${color} opacity-0 group-hover:opacity-40 transition-opacity duration-300 blur-sm`}></div>
       </motion.div>
     </motion.div>
@@ -159,7 +156,6 @@ const CategoryHeader: React.FC<{
         <span className="ml-2 text-sm font-medium">{category}</span>
       </div>
 
-      {/* Active indicator */}
       {isActive && (
         <motion.div
           className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-white/10 to-transparent"
@@ -214,7 +210,6 @@ const SkillsSection: React.FC<{ id: string }> = ({ id }) => {
 
   const activeSkills = skillsData[activeCategory] || [];
   
-  // Group skills by branch
   const skillsByBranch = activeSkills.reduce((acc, skill) => {
     if (!acc[skill.branch]) {
       acc[skill.branch] = [];
@@ -225,7 +220,6 @@ const SkillsSection: React.FC<{ id: string }> = ({ id }) => {
 
   return (
     <Section id={id} title="Tech Arsenal">
-      {/* Animated background */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div 
           className="absolute inset-0 bg-gradient-to-r from-transparent via-accent-teal/5 to-transparent"
@@ -233,7 +227,6 @@ const SkillsSection: React.FC<{ id: string }> = ({ id }) => {
           transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
         />
         
-        {/* Floating particles */}
         {[...Array(12)].map((_, i) => (
           <motion.div
             key={i}
@@ -257,7 +250,6 @@ const SkillsSection: React.FC<{ id: string }> = ({ id }) => {
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto">
-        {/* Category Navigation */}
         <motion.div 
           className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8"
           initial={{ opacity: 0, y: 20 }}
@@ -275,7 +267,6 @@ const SkillsSection: React.FC<{ id: string }> = ({ id }) => {
           ))}
         </motion.div>
 
-        {/* Skills Display by Branch */}
         <motion.div
           key={activeCategory}
           style={{ perspective: 1000 }}

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import Section from './ui/Section';
 import Button from './ui/Button';
 import { SOCIAL_LINKS, USER_INFO } from '../constants';
-import { SendIcon } from './ui/Icons'; // Placeholder
+import { SendIcon } from './ui/Icons'; 
 
 interface FormData {
   name: string;
@@ -25,7 +25,6 @@ const ContactSection: React.FC<{ id: string }> = ({ id }) => {
     e.preventDefault();
     setIsLoading(true);
     
-    // Basic validation
     if (!formData.name || !formData.email || !formData.message) {
       setError('Please fill in all fields.');
       setIsLoading(false);
@@ -39,16 +38,15 @@ const ContactSection: React.FC<{ id: string }> = ({ id }) => {
     setError('');
     
     try {
-      // Using EmailJS to send email directly from frontend
       const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          service_id: 'service_u0t18t5', // Replace with your EmailJS service ID
-          template_id: 'template_4oota31', // Replace with your EmailJS template ID
-          user_id: 'bW8aOOtx8glmPdyqu', // Replace with your EmailJS public key
+          service_id: 'service_u0t18t5', 
+          template_id: 'template_4oota31', 
+          user_id: 'bW8aOOtx8glmPdyqu', 
           template_params: {
             to_email: 'vaibhavbhagat7461@gmail.com',
             from_name: formData.name,
@@ -62,7 +60,6 @@ const ContactSection: React.FC<{ id: string }> = ({ id }) => {
       if (response.ok) {
         console.log('Email sent successfully');
         setIsSubmitted(true);
-        // Reset form after a delay
         setTimeout(() => {
           setFormData({ name: '', email: '', message: '' });
           setIsSubmitted(false);

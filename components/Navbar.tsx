@@ -38,8 +38,7 @@ const Navbar: React.FC = () => {
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-end h-20"> {/* Changed justify-between to justify-end */}
-          {/* VB initials removed */}
+        <div className="flex items-center justify-end h-20"> 
           <div className="hidden md:flex space-x-6">
             {NAV_LINKS.map((link, index) => (
               <motion.button
@@ -66,7 +65,6 @@ const Navbar: React.FC = () => {
           </div>
         </div>
       </div>
-      {/* Mobile Menu */}
       {isOpen && (
         <motion.div
           initial={{ opacity: 0, height: 0 }}

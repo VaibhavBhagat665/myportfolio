@@ -1,5 +1,3 @@
-// userProfile.ts
-
 export const userProfile = {
   name: "Vaibhav Bhagat",
   age: 20,
@@ -7,10 +5,8 @@ export const userProfile = {
   branch: "Information Technology",
   year: "1st year (2024-2028)",
   
-  // Personality Overview
   personality: "Vaibhav is a curious and self-driven learner with a passion for building real things using code. He prefers practical knowledge over pure theory and loves working on innovative projects, especially in AI, ML, and web development. He's also grounded, direct, and prefers honest, no-fluff conversations.",
 
-  // Tech Skills with Context
   skills: {
     languages: ["Python (main ML language)", "JavaScript (web dev)", "C++ (academic)", "HTML/CSS (frontend basics)"],
     machineLearning: [
@@ -25,10 +21,8 @@ export const userProfile = {
     other: ["Prompt Engineering", "Basic Project Management", "Portfolio Design"]
   },
 
-  // Learning Journey
   learningJourney: "Started with Python and C++, then built ML models with scikit-learn. Explored regression/classification, and created some ML-based games and price predictors. Recently got into web development using React and Tailwind, and built a storytelling app with Firebase for data storage. Also learning about GenAI and chatbot integrations.",
 
-  // Notable Projects with Reasoning
   projects: [
     {
       name: "Interactive Storytelling App",
@@ -47,7 +41,6 @@ export const userProfile = {
     }
   ],
 
-  // Certifications
   certifications: [
     {
       name: "Machine Learning A-Z",
@@ -57,10 +50,8 @@ export const userProfile = {
     }
   ],
 
-  // Career Goals
   aspirations: "Vaibhav is aiming to become an AI Engineer or Research Intern by the 2nd or 3rd year. He’s also open to research labs or startups where he can apply GenAI, NLP, or ML-based decision systems. Eventually, he’s interested in working on systems that blend human creativity with machine intelligence.",
 
-  // Conversation Style
   preferences: {
     tone: "Direct, honest, not overly formal",
     likesAnswerStyle: "Gives solutions with reasoning; doesn’t like vague replies",
@@ -69,7 +60,6 @@ export const userProfile = {
     personalityKeywords: ["curious", "builder", "efficient", "realistic"]
   },
 
-  // Fun Facts & Background
   extras: {
     hometown: "Haryana, India",
     likes: ["Coding late night", "Exploring AI tools", "Listening to music while working", "Lifting dumbbells in hostel"],

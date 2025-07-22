@@ -15,12 +15,10 @@ const TechShowcase3D: React.FC<{ id: string }> = ({ id }) => {
   useEffect(() => {
     if (!mountRef.current) return;
 
-    // Scene setup
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x0a0a0f);
     sceneRef.current = scene;
 
-    // Camera setup
     const camera = new THREE.PerspectiveCamera(
       75,
       mountRef.current.clientWidth / mountRef.current.clientHeight,
@@ -29,7 +27,6 @@ const TechShowcase3D: React.FC<{ id: string }> = ({ id }) => {
     );
     camera.position.set(0, 0, 12);
 
-    // Renderer setup
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -38,7 +35,6 @@ const TechShowcase3D: React.FC<{ id: string }> = ({ id }) => {
     mountRef.current.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
-    // Lighting
     const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
     scene.add(ambientLight);
 
@@ -51,12 +47,10 @@ const TechShowcase3D: React.FC<{ id: string }> = ({ id }) => {
     pointLight.position.set(-10, -10, -5);
     scene.add(pointLight);
 
-    // Create Neural Network Visualization
     const createNeuralNetwork = () => {
       const networkGroup = new THREE.Group();
       
-      // Create layers of nodes
-      const layers = [8, 12, 16, 12, 6]; // Neural network architecture
+      const layers = [8, 12, 16, 12, 6]; 
       const layerSpacing = 3;
       const nodeGeometry = new THREE.SphereGeometry(0.08, 16, 16);
       
@@ -88,7 +82,6 @@ const TechShowcase3D: React.FC<{ id: string }> = ({ id }) => {
         
         nodes.push(layerNodes);
         
-        // Create connections to next layer
         if (layerIndex < layers.length - 1) {
           layerNodes.forEach(node => {
             const nextLayerNodes = Math.min(4, layers[layerIndex + 1]); // Limit connections
@@ -97,7 +90,7 @@ const TechShowcase3D: React.FC<{ id: string }> = ({ id }) => {
               if (nodes[layerIndex + 1] && nodes[layerIndex + 1][targetIndex]) {
                 const lineGeometry = new THREE.BufferGeometry().setFromPoints([
                   node.position,
-                  new THREE.Vector3(0, 0, 0) // Will be updated in animation
+                  new THREE.Vector3(0, 0, 0)
                 ]);
                 
                 const lineMaterial = new THREE.LineBasicMaterial({
@@ -122,7 +115,6 @@ const TechShowcase3D: React.FC<{ id: string }> = ({ id }) => {
     scene.add(networkGroup);
     networkRef.current = networkGroup;
 
-    // Create floating particles
     const createParticles = () => {
       const particleCount = 200;
       const positions = new Float32Array(particleCount * 3);
@@ -164,7 +156,6 @@ const TechShowcase3D: React.FC<{ id: string }> = ({ id }) => {
     scene.add(particles);
     particlesRef.current = particles;
 
-    // Mouse interaction
     const handleMouseMove = (event: MouseEvent) => {
       const rect = mountRef.current?.getBoundingClientRect();
       if (rect) {
@@ -175,29 +166,24 @@ const TechShowcase3D: React.FC<{ id: string }> = ({ id }) => {
 
     mountRef.current.addEventListener('mousemove', handleMouseMove);
 
-    // Animation loop
     const animate = (time: number) => {
       frameRef.current = requestAnimationFrame(animate);
 
-      // Rotate neural network
       if (networkRef.current) {
         networkRef.current.rotation.y = time * 0.0003;
         networkRef.current.rotation.x = Math.sin(time * 0.0002) * 0.1;
         
-        // Animate individual nodes
         nodes.forEach((layer, layerIndex) => {
           layer.forEach((node, nodeIndex) => {
             const baseY = node.position.y;
             node.position.y = baseY + Math.sin(time * 0.001 + nodeIndex) * 0.1;
             
-            // Pulse effect
             const scale = 1 + Math.sin(time * 0.002 + nodeIndex) * 0.2;
             node.scale.setScalar(scale);
           });
         });
       }
 
-      // Animate particles
       if (particlesRef.current) {
         const positions = particlesRef.current.geometry.attributes.position.array as Float32Array;
         const velocities = particlesRef.current.userData.velocities as Float32Array;
@@ -207,12 +193,10 @@ const TechShowcase3D: React.FC<{ id: string }> = ({ id }) => {
           positions[i + 1] += velocities[i + 1];
           positions[i + 2] += velocities[i + 2];
 
-          // Boundary checking
           if (Math.abs(positions[i]) > 10) velocities[i] *= -1;
           if (Math.abs(positions[i + 1]) > 10) velocities[i + 1] *= -1;
           if (Math.abs(positions[i + 2]) > 10) velocities[i + 2] *= -1;
 
-          // Mouse interaction
           const mouseInfluence = 0.02;
           positions[i] += mouseRef.current.x * mouseInfluence;
           positions[i + 1] += mouseRef.current.y * mouseInfluence;
@@ -221,7 +205,6 @@ const TechShowcase3D: React.FC<{ id: string }> = ({ id }) => {
         particlesRef.current.geometry.attributes.position.needsUpdate = true;
       }
 
-      // Camera movement based on mouse
       camera.position.x += (mouseRef.current.x * 2 - camera.position.x) * 0.02;
       camera.position.y += (mouseRef.current.y * 2 - camera.position.y) * 0.02;
       camera.lookAt(0, 0, 0);
@@ -232,7 +215,6 @@ const TechShowcase3D: React.FC<{ id: string }> = ({ id }) => {
     animate(0);
     setIsLoaded(true);
 
-    // Handle resize
     const handleResize = () => {
       if (!mountRef.current || !camera || !renderer) return;
       
@@ -243,7 +225,6 @@ const TechShowcase3D: React.FC<{ id: string }> = ({ id }) => {
 
     window.addEventListener('resize', handleResize);
 
-    // Cleanup
     return () => {
       if (frameRef.current) {
         cancelAnimationFrame(frameRef.current);
@@ -260,7 +241,6 @@ const TechShowcase3D: React.FC<{ id: string }> = ({ id }) => {
   return (
     <section id={id} className="py-24 bg-gradient-to-b from-slate-900 via-gray-900 to-black relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 50 }}
@@ -283,7 +263,6 @@ const TechShowcase3D: React.FC<{ id: string }> = ({ id }) => {
           </p>
         </motion.div>
 
-        {/* 3D Visualization */}
         <motion.div
           className="relative"
           initial={{ opacity: 0, scale: 0.8 }}
@@ -307,7 +286,6 @@ const TechShowcase3D: React.FC<{ id: string }> = ({ id }) => {
           )}
         </motion.div>
 
-        {/* Tech Stack Indicators */}
         <motion.div
           className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12"
           initial={{ opacity: 0, y: 30 }}
@@ -337,7 +315,6 @@ const TechShowcase3D: React.FC<{ id: string }> = ({ id }) => {
         </motion.div>
       </div>
 
-      {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-cyan-500/5 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/3 right-1/4 w-40 h-40 bg-purple-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>

@@ -22,7 +22,6 @@ const AIChatbot: React.FC = () => {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const apiKey = process.env.API_KEY;
 
-  // 3D interaction values
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const rotateX = useSpring(useTransform(mouseY, [-100, 100], [10, -10]));
@@ -263,7 +262,7 @@ Speak about Vaibhav as if you know him personally, not as if you're reading from
         `;
 
       chatSessionRef.current = ai.chats.create({
-        model: 'gemini-2.5-flash-preview-04-17',
+        model: 'models/gemini-1.5-pro-latest',
         config: { systemInstruction: context },
       });
 
@@ -338,7 +337,6 @@ Speak about Vaibhav as if you know him personally, not as if you're reading from
 
   return (
     <>
-      {/* Enhanced 3D Floating Action Button - Hidden on mobile when chat is open */}
       <AnimatePresence>
         {!isOpen && (
           <motion.button
@@ -359,10 +357,8 @@ Speak about Vaibhav as if you know him personally, not as if you're reading from
             transition={{ type: 'spring', stiffness: 200, damping: 25 }}
             aria-label="Toggle AI Chatbot"
           >
-            {/* Holographic glow */}
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-accent-purple via-accent-teal to-accent-purple blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-500 scale-150"></div>
             
-            {/* Floating particles around button - hidden on mobile for performance */}
             {[...Array(6)].map((_, i) => (
               <motion.div
                 key={i}
@@ -384,7 +380,6 @@ Speak about Vaibhav as if you know him personally, not as if you're reading from
               />
             ))}
 
-            {/* Main button with 3D effect */}
             <motion.div
               className="relative bg-gradient-to-br from-accent-purple to-accent-teal text-white p-3 sm:p-4 rounded-full shadow-2xl border border-accent-purple/30"
               style={{
@@ -397,7 +392,6 @@ Speak about Vaibhav as if you know him personally, not as if you're reading from
                 <ChatBubbleIcon className="w-6 h-6 sm:w-8 sm:h-8" />
               </motion.div>
               
-              {/* Inner glow */}
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-accent-purple/50 to-accent-teal/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </motion.div>
           </motion.button>
@@ -419,21 +413,16 @@ Speak about Vaibhav as if you know him personally, not as if you're reading from
             aria-modal="true"
             role="dialog"
           >
-            {/* Holographic background glow - reduced on mobile */}
             <div className="absolute inset-0 bg-gradient-to-br from-accent-purple/10 sm:from-accent-purple/20 via-accent-teal/10 sm:via-accent-teal/20 to-accent-purple/10 sm:to-accent-purple/20 blur-2xl rounded-none sm:rounded-2xl opacity-60"></div>
             
-            {/* Glass morphism container */}
             <div className="relative bg-background-light/90 sm:bg-background-light/80 backdrop-blur-xl shadow-2xl rounded-none sm:rounded-2xl border-0 sm:border sm:border-white/20 flex flex-col h-full sm:h-auto sm:max-h-[calc(100vh-6rem)] overflow-hidden">
-              {/* Animated border - hidden on mobile for performance */}
               <div className="absolute inset-0 rounded-none sm:rounded-2xl bg-gradient-to-r from-accent-purple via-accent-teal to-accent-purple opacity-10 sm:opacity-20 animate-pulse hidden sm:block"></div>
               
-              {/* Header with 3D effect */}
               <motion.div 
                 className="relative flex items-center justify-between p-4 sm:p-4 border-b border-white/10 bg-gradient-to-r from-card-dark/50 to-card-dark/30 backdrop-blur-sm"
                 style={{ translateZ: 10 }}
               >
                 <div className="flex items-center space-x-3">
-                  {/* AI Avatar */}
                   <motion.div
                     className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-accent-purple to-accent-teal rounded-full flex items-center justify-center border border-white/20"
                     animate={{ rotate: [0, 360] }}
@@ -466,7 +455,6 @@ Speak about Vaibhav as if you know him personally, not as if you're reading from
                 </motion.button>
               </motion.div>
 
-              {/* Messages Area with enhanced styling */}
               <div className="flex-grow p-3 sm:p-4 overflow-y-auto space-y-3 sm:space-y-4 bg-gradient-to-b from-transparent to-black/5 min-h-0">
                 {messages.map((msg, index) => (
                   <motion.div
@@ -544,7 +532,6 @@ Speak about Vaibhav as if you know him personally, not as if you're reading from
                 <div ref={messagesEndRef} />
               </div>
               
-              {/* Enhanced Input Area */}
               <motion.form
                 onSubmit={(e) => { e.preventDefault(); handleSendMessage(); }}
                 className="p-3 sm:p-4 border-t border-white/10 bg-gradient-to-r from-card-dark/30 to-card-dark/50 backdrop-blur-sm"
@@ -561,7 +548,6 @@ Speak about Vaibhav as if you know him personally, not as if you're reading from
                       disabled={isLoading || (!apiKey && !chatSessionRef.current)}
                       aria-label="Chat input"
                     />
-                    {/* Input glow effect - reduced on mobile */}
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-accent-teal/5 sm:from-accent-teal/10 to-accent-purple/5 sm:to-accent-purple/10 opacity-0 focus-within:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                   </div>
                   

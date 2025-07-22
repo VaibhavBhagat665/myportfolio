@@ -2,26 +2,26 @@ import React from 'react';
 import { motion, Variants, RepeatType, Easing } from 'framer-motion';
 
 interface FloatingParticleProps {
-  size?: number; // approx size in pixels
-  color?: string; // Tailwind color class e.g. 'bg-accent-teal'
-  duration?: number; // animation duration
-  delay?: number; // animation delay
-  className?: string; // additional classes
-  style?: React.CSSProperties; // for top, left, etc.
+  size?: number; 
+  color?: string; 
+  duration?: number; 
+  delay?: number;
+  className?: string; 
+  style?: React.CSSProperties; 
 }
 
 const FloatingParticle: React.FC<FloatingParticleProps> = ({
   size = 10,
   color = 'bg-accent-teal/30',
-  duration = Math.random() * 10 + 10, // 10-20s
-  delay = Math.random() * 5, // 0-5s
+  duration = Math.random() * 10 + 10,
+  delay = Math.random() * 5,
   className = '',
   style = {},
 }) => {
   const particleVariants: Variants = {
     initial: {
       opacity: 0,
-      scale: Math.random() * 0.5 + 0.5, // 0.5 to 1
+      scale: Math.random() * 0.5 + 0.5, 
     },
     animate: {
       opacity: [0, 1, 1, 0],

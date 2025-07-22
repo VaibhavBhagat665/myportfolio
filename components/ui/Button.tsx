@@ -8,7 +8,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
-  href?: string; // If it's a link button
+  href?: string; 
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -19,7 +19,7 @@ const Button: React.FC<ButtonProps> = ({
   leftIcon,
   rightIcon,
   href,
-  ...props // These are the rest of React.ButtonHTMLAttributes
+  ...props
 }) => {
   const baseStyle = "font-medium rounded-lg focus:outline-none focus:ring-4 transition-all duration-300 ease-in-out inline-flex items-center justify-center";
 
@@ -51,30 +51,23 @@ const Button: React.FC<ButtonProps> = ({
     transition: { type: "spring", stiffness: 300, damping: 15 } as Transition
   };
 
-  // Destructure known conflicting event handlers from React.ButtonHTMLAttributes
-  // to prevent them from being spread onto motion.button if they conflict
-  // with MotionProps signatures. This includes animation and drag events.
   const {
     onAnimationStart,
     onAnimationEnd,
     onAnimationIteration,
     onTransitionEnd,
-    // HTML Drag events that might conflict with Framer Motion's drag gesture props
     onDrag,
     onDragEnd,
     onDragEnter,
-    onDragExit, // Deprecated, but good to include if it's in the types
+    onDragExit,
     onDragLeave,
     onDragOver,
     onDragStart,
     onDrop,
-    ...restHtmlProps // These are the remaining HTML attributes
+    ...restHtmlProps 
   } = props;
 
   if (href) {
-    // For motion.a, we pass specific anchor attributes and motionAnimProps.
-    // We don't spread restHtmlProps here to avoid passing button-specific attributes
-    // to an anchor tag.
     return (
       <motion.a
         href={href}
@@ -82,8 +75,6 @@ const Button: React.FC<ButtonProps> = ({
         rel="noopener noreferrer"
         className={combinedClassName}
         {...motionAnimProps}
-        // onClick can be passed if it's part of restHtmlProps and intended
-        // onClick={restHtmlProps.onClick as React.MouseEventHandler<HTMLAnchorElement>} 
       >
         {content}
       </motion.a>
@@ -93,8 +84,8 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <motion.button
       className={combinedClassName}
-      {...restHtmlProps} // Spread the filtered HTML attributes
-      {...motionAnimProps} // Spread Framer Motion specific animation props
+      {...restHtmlProps} 
+      {...motionAnimProps} 
     >
       {content}
     </motion.button>

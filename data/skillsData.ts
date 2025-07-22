@@ -9,9 +9,9 @@ import {
     ReactIcon, 
     TensorFlowIcon, 
     VSCodeIcon,
-    CodeIcon,  // Added to import
-    BrainIcon, // Added to import
-    WrenchIcon // Added to import
+    CodeIcon,  
+    BrainIcon, 
+    WrenchIcon 
 } from '../components/ui/Icons';
 
 export const skillsData: Skill[] = [
@@ -41,5 +41,3 @@ export const skillsData: Skill[] = [
   { id: 'nextjs', name: 'Next.js', category: SkillCategory.LEARNING, icon: ReactIcon }, 
   { id: 'docker', name: 'Docker', category: SkillCategory.LEARNING, icon: WrenchIcon }, 
 ];
-
-// Removed local dummy icon definitions as they are now imported.

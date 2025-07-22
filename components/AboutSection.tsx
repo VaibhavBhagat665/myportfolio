@@ -26,7 +26,7 @@ const AboutSection: React.FC<{ id: string }> = ({ id }) => {
       <motion.div
         className="max-w-4xl mx-auto p-6 sm:p-8 md:p-10 bg-card-dark/50 rounded-xl shadow-2xl backdrop-blur-lg border border-border-dark"
         variants={cardVariants}
-        style={{ perspective: "1000px" }} // For 3D tilt effect
+        style={{ perspective: "1000px" }} 
       >
         <div className="grid md:grid-cols-3 gap-8 items-center">
           <motion.div

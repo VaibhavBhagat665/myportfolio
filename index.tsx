@@ -2,7 +2,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-// No global CSS import needed as Tailwind is loaded via CDN and configured in index.html
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {

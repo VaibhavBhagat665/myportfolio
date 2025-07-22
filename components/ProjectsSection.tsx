@@ -77,7 +77,6 @@ const ProjectCard: React.FC<{
       whileHover={{ scale: 1.02, y: -8 }}
       style={{ perspective: 1000 }}
     >
-      {/* Holographic glow effect */}
       <motion.div 
         className="absolute -inset-2 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         animate={{
@@ -92,7 +91,6 @@ const ProjectCard: React.FC<{
         <div className="absolute inset-0 rounded-2xl blur-xl"></div>
       </motion.div>
 
-      {/* Main card */}
       <motion.div
         className={`relative bg-card-dark rounded-2xl overflow-hidden shadow-2xl border ${currentBorder} backdrop-blur-sm`}
         style={{
@@ -102,7 +100,6 @@ const ProjectCard: React.FC<{
           transformStyle: 'preserve-3d',
         }}
       >
-        {/* Project image with overlay effects */}
         <div className="relative h-48 w-full overflow-hidden">
           <motion.img 
             src={project.imageUrl} 
@@ -111,7 +108,6 @@ const ProjectCard: React.FC<{
             style={{ translateZ: 10 }}
           />
           
-          {/* Animated overlay */}
           <motion.div 
             className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500"
             animate={{
@@ -123,20 +119,13 @@ const ProjectCard: React.FC<{
             }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           />
-          
-          {/* Year badge with animation */}
-          
-
-          {/* Floating particles */}
-        
+                  
         </div>
 
-        {/* Content area with enhanced animations */}
         <motion.div 
           className="p-6 relative"
           style={{ translateZ: 15 }}
         >
-          {/* Animated background pattern */}
           <div className="absolute inset-0 opacity-5">
             <motion.div
               className="w-full h-full"
@@ -151,7 +140,6 @@ const ProjectCard: React.FC<{
             />
           </div>
 
-          {/* Project title with typewriter effect */}
           <motion.h3 
             className="text-xl font-display font-bold mb-3 text-text-primary group-hover:text-accent-teal transition-colors duration-300 relative z-10"
             style={{ translateZ: 20 }}
@@ -167,7 +155,6 @@ const ProjectCard: React.FC<{
             />
           </motion.h3>
           
-          {/* Description with reveal animation */}
           <motion.p 
             className="text-0.1xl lg:text-0.2xl text-text-secondary text-sm mb-3 line-clamp-2 relative z-10"
             style={{ translateZ: 15 }}
@@ -178,7 +165,6 @@ const ProjectCard: React.FC<{
             {project.description}
           </motion.p>
           
-          {/* Tech stack with staggered animations */}
           <motion.div 
             className="flex flex-wrap gap-2 mb-4 relative z-10"
             style={{ translateZ: 10 }}
@@ -216,7 +202,6 @@ const ProjectCard: React.FC<{
             )}
           </motion.div>
           
-          {/* Interactive call-to-action */}
           <motion.div 
             className="flex items-center justify-between relative z-10"
             style={{ translateZ: 25 }}
@@ -231,7 +216,6 @@ const ProjectCard: React.FC<{
               Click to explore →
             </motion.span>
             
-            {/* Quick action buttons */}
             <div className="flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               {project.githubUrl && (
                 <motion.div
@@ -255,7 +239,6 @@ const ProjectCard: React.FC<{
           </motion.div>
         </motion.div>
 
-        {/* Subtle inner glow with animation */}
         <motion.div 
           className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${currentGradient} opacity-0 group-hover:opacity-10 pointer-events-none`}
           animate={{
@@ -264,7 +247,6 @@ const ProjectCard: React.FC<{
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
         />
 
-        {/* Border shine effect */}
         <motion.div
           className="absolute inset-0 rounded-2xl border-2 border-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
           style={{
@@ -337,7 +319,6 @@ const ProjectStoryCard: React.FC<{
       exit={{ opacity: 0 }}
       onClick={onClose}
     >
-      {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(20)].map((_, i) => (
           <motion.div
@@ -363,7 +344,6 @@ const ProjectStoryCard: React.FC<{
         ))}
       </div>
 
-      {/* Navigation buttons with enhanced animations */}
       <motion.button
         className="absolute left-8 top-1/2 -translate-y-1/2 w-16 h-16 bg-card-dark/80 backdrop-blur-sm border border-accent-teal/40 rounded-2xl flex items-center justify-center text-accent-teal hover:bg-accent-teal/20 transition-all duration-300 z-10 group hidden md:flex"
         onClick={(e) => {
@@ -387,7 +367,6 @@ const ProjectStoryCard: React.FC<{
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
         </motion.svg>
         
-        {/* Glow effect */}
         <motion.div
           className="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent-teal/20 to-accent-purple/20 opacity-0 group-hover:opacity-100 blur-xl"
           animate={{ scale: [1, 1.2, 1] }}
@@ -418,7 +397,6 @@ const ProjectStoryCard: React.FC<{
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </motion.svg>
         
-        {/* Glow effect */}
         <motion.div
           className="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent-teal/20 to-accent-purple/20 opacity-0 group-hover:opacity-100 blur-xl"
           animate={{ scale: [1, 1.2, 1] }}
@@ -426,7 +404,6 @@ const ProjectStoryCard: React.FC<{
         />
       </motion.button>
 
-      {/* Enhanced story card */}
       <motion.div
   className="relative max-w-5xl mx-auto bg-card-dark/95 backdrop-blur-xl rounded-3xl overflow-hidden shadow-2xl border border-accent-teal/40 m-6 md:max-w-3xl"
   initial={{ scale: 0.5, opacity: 0, y: 100, rotateX: -30 }}
@@ -438,7 +415,7 @@ const ProjectStoryCard: React.FC<{
   drag="x"
   dragConstraints={{ left: 0, right: 0 }}
   onDragEnd={(event, info) => {
-    if (window.innerWidth < 768) { // Only on mobile
+    if (window.innerWidth < 768) { 
       if (info.offset.x > 100) {
         onPrevious();
       } else if (info.offset.x < -100) {
@@ -447,7 +424,6 @@ const ProjectStoryCard: React.FC<{
     }
   }}
 >
-        {/* Animated holographic glow */}
         <motion.div 
           className="absolute -inset-1 rounded-3xl opacity-60"
           animate={{
@@ -467,7 +443,6 @@ const ProjectStoryCard: React.FC<{
           />
         </motion.div>
 
-        {/* Close button with enhanced animation */}
         <motion.button
           className="absolute top-6 right-6 w-12 h-12 bg-black/60 backdrop-blur-sm rounded-2xl flex items-center justify-center text-white hover:bg-accent-teal/30 transition-all duration-300 z-20 group"
           onClick={onClose}
@@ -488,7 +463,6 @@ const ProjectStoryCard: React.FC<{
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </motion.svg>
           
-          {/* Button glow */}
           <motion.div
             className="absolute inset-0 rounded-2xl bg-accent-teal/20 opacity-0 group-hover:opacity-100 blur-lg"
             animate={{ scale: [1, 1.3, 1] }}
@@ -496,7 +470,6 @@ const ProjectStoryCard: React.FC<{
           />
         </motion.button>
 
-        {/* Enhanced project counter */}
         <motion.div 
           className="absolute top-6 left-6 px-6 py-3 bg-black/60 backdrop-blur-sm rounded-2xl border border-accent-teal/40 z-20"
           initial={{ opacity: 0, y: -30, scale: 0.8 }}
@@ -515,7 +488,6 @@ const ProjectStoryCard: React.FC<{
         </motion.div>
 
         <div className="relative grid lg:grid-cols-2 gap-0 max-h-[100vh] lg:max-h-[80vh]">
-          {/* Enhanced image section */}
           <motion.div 
             className="relative h-42 lg:h-38 overflow-hidden"
             initial={{ x: -100, opacity: 0 }}
@@ -531,7 +503,6 @@ const ProjectStoryCard: React.FC<{
               transition={{ duration: 0.8, ease: "easeOut" }}
             />
             
-            {/* Enhanced gradient overlay */}
             <motion.div 
               className="absolute inset-0"
               animate={{
@@ -544,21 +515,15 @@ const ProjectStoryCard: React.FC<{
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             />
             
-            {/* Floating year badge */}
-            
-
-            {/* Animated particles */}
-            
+                        
           </motion.div>
 
-          {/* Enhanced content section */}
           <motion.div 
             className="p-3 lg:p-4 flex flex-col justify-center relative overflow-hidden"
             initial={{ x: 100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
           >
-            {/* Animated background pattern */}
             <motion.div
               className="absolute inset-0 opacity-5"
               animate={{
@@ -572,7 +537,6 @@ const ProjectStoryCard: React.FC<{
               transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
             />
 
-            {/* Enhanced title with typing animation */}
             <motion.h2 
               className={`text-1xl lg:text-2xl font-display font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r ${currentTheme.accent} relative`}
               initial={{ opacity: 0, y: 30 }}
@@ -588,7 +552,6 @@ const ProjectStoryCard: React.FC<{
               />
             </motion.h2>
             
-            {/* Enhanced description */}
             <motion.p 
               className="text-0.1xl lg:text-0.2xl text-text-secondary text-sm mb-4 relative z-10"
               initial={{ opacity: 0, y: 20 }}
@@ -598,7 +561,6 @@ const ProjectStoryCard: React.FC<{
               {project.description}
             </motion.p>
             
-            {/* Enhanced tech stack */}
             <motion.div 
   className="mb-8 relative z-10"
   initial={{ opacity: 0, y: 20 }}
@@ -639,7 +601,6 @@ const ProjectStoryCard: React.FC<{
   </div>
 </motion.div>
             
-            {/* Enhanced action buttons */}
             <motion.div 
               className="flex flex-wrap gap-4 relative z-10"
               initial={{ opacity: 0, y: 30 }}
@@ -664,7 +625,6 @@ const ProjectStoryCard: React.FC<{
                   </motion.div>
                   <span className="font-medium">View Code</span>
                   
-                  {/* Button glow */}
                   <motion.div
                     className="absolute inset-0 rounded-xl bg-accent-teal/10 opacity-0 group-hover:opacity-100 blur-sm"
                     animate={{ scale: [1, 1.1, 1] }}
@@ -691,12 +651,10 @@ const ProjectStoryCard: React.FC<{
                   </motion.div>
                   <span className="font-medium relative z-10">Live Demo</span>
                   
-                  {/* Animated background */}
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
                   />
                   
-                  {/* Button pulse */}
                   <motion.div
                     className="absolute inset-0 rounded-xl bg-white/10"
                     animate={{ opacity: [0, 0.3, 0] }}
@@ -707,8 +665,6 @@ const ProjectStoryCard: React.FC<{
             </motion.div>
           </motion.div>
         </div>
-
-        {/* Enhanced progress indicator */}
         <motion.div 
           className="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-3"
           initial={{ opacity: 0, y: 30 }}
@@ -762,7 +718,6 @@ const Projects: React.FC = () => {
 
   return (
     <Section id="projects" title="Featured Projects">
-      {/* Enhanced animated background */}
       <div className="absolute inset-0 overflow-hidden">
     {[...Array(15)].map((_, i) => (
       <motion.div
@@ -788,7 +743,6 @@ const Projects: React.FC = () => {
   </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        {/* Enhanced section header */}
         <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 50 }}
@@ -811,7 +765,6 @@ const Projects: React.FC = () => {
           </motion.p>
         </motion.div>
 
-        {/* Enhanced projects grid */}
         <motion.div 
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           initial={{ opacity: 0 }}
@@ -829,7 +782,6 @@ const Projects: React.FC = () => {
           ))}
         </motion.div>
 
-        {/* Call-to-action section */}
         <motion.div 
           className="text-center mt-20"
           initial={{ opacity: 0, y: 30 }}
@@ -861,7 +813,6 @@ const Projects: React.FC = () => {
             </motion.div>
             <span className="font-medium text-lg relative z-10">View All Projects</span>
             
-            {/* Animated background */}
             <motion.div
               className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
             />
@@ -869,7 +820,6 @@ const Projects: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* Enhanced project story modal */}
       <AnimatePresence>
         {selectedProject !== null && (
           <ProjectStoryCard

@@ -7,7 +7,6 @@ import { USER_INFO, NAV_LINKS } from '../constants';
 import { FloatingParticlesBackground } from './ui/FloatingParticle';
 import { ArrowDownIcon, BriefcaseIcon } from './ui/Icons';
 
-// Enhanced 3D Software Development Icon Component with Diverse Revolving Elements
 const CodeIcon3D: React.FC = () => {
   return (
     <motion.div
@@ -28,28 +27,24 @@ const CodeIcon3D: React.FC = () => {
       }}
       style={{ perspective: '1000px' }}
     >
-      {/* Enhanced outer glow ring */}
       <motion.div
         className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500/20 via-violet-500/20 to-indigo-500/20 blur-xl"
         animate={{ rotate: 360 }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
       />
       
-      {/* Secondary glow layer */}
       <motion.div
         className="absolute inset-2 rounded-full bg-gradient-to-r from-violet-500/15 via-purple-500/15 to-indigo-500/15 blur-lg"
         animate={{ rotate: -360 }}
         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
       />
       
-      {/* Tertiary inner glow */}
       <motion.div
         className="absolute inset-4 rounded-full bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-violet-500/10 blur-md"
         animate={{ rotate: 360 }}
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
       />
       
-      {/* Main container with enhanced 3D effect and rotation */}
       <motion.div 
         className="relative w-full h-full bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-violet-400/30 shadow-2xl shadow-violet-400/20 overflow-hidden"
         style={{
@@ -64,10 +59,8 @@ const CodeIcon3D: React.FC = () => {
           times: [0, 0.25, 0.5, 0.75, 1]
         }}
       >
-        {/* Enhanced background pattern */}
         <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-violet-600/10" />
         
-        {/* Grid pattern overlay */}
         <div 
           className="absolute inset-0 opacity-20"
           style={{
@@ -79,7 +72,6 @@ const CodeIcon3D: React.FC = () => {
           }}
         />
         
-        {/* Code brackets - enhanced and animated */}
         <motion.div
           className="absolute inset-0 flex items-center justify-center"
           animate={{ opacity: [0.7, 1, 0.7] }}
@@ -90,7 +82,6 @@ const CodeIcon3D: React.FC = () => {
           </div>
         </motion.div>
         
-        {/* Enhanced floating code symbols */}
         <motion.div
           className="absolute top-2 left-2 text-purple-400 text-sm md:text-base font-mono"
           animate={{ y: [-2, 2, -2], opacity: [0.5, 1, 0.5] }}
@@ -123,7 +114,6 @@ const CodeIcon3D: React.FC = () => {
           ;
         </motion.div>
         
-        {/* Additional corner symbols */}
         <motion.div
           className="absolute top-1/4 left-1 text-purple-300 text-xs md:text-sm font-mono"
           animate={{ x: [-1, 1, -1], opacity: [0.4, 0.8, 0.4] }}
@@ -140,7 +130,6 @@ const CodeIcon3D: React.FC = () => {
           *
         </motion.div>
         
-        {/* Enhanced central pulsing dot */}
         <motion.div
           className="absolute top-1/2 left-1/2 w-2 h-2 md:w-3 md:h-3 bg-violet-400 rounded-full transform -translate-x-1/2 -translate-y-1/2"
           animate={{ 
@@ -150,14 +139,12 @@ const CodeIcon3D: React.FC = () => {
           transition={{ duration: 1.5, repeat: Infinity }}
         />
         
-        {/* Enhanced corner accent lines */}
         <div className="absolute top-0 left-0 w-4 h-4 md:w-6 md:h-6 border-l-2 border-t-2 border-violet-400/60 rounded-tl-lg" />
         <div className="absolute top-0 right-0 w-4 h-4 md:w-6 md:h-6 border-r-2 border-t-2 border-violet-400/60 rounded-tr-lg" />
         <div className="absolute bottom-0 left-0 w-4 h-4 md:w-6 md:h-6 border-l-2 border-b-2 border-violet-400/60 rounded-bl-lg" />
         <div className="absolute bottom-0 right-0 w-4 h-4 md:w-6 md:h-6 border-r-2 border-b-2 border-violet-400/60 rounded-br-lg" />
       </motion.div>
       
-      {/* Primary orbit - Tech symbols */}
       <motion.div
         className="absolute inset-0 pointer-events-none"
         animate={{ rotate: 360 }}
@@ -177,7 +164,6 @@ const CodeIcon3D: React.FC = () => {
         </div>
       </motion.div>
       
-      {/* Secondary orbit - Code elements */}
       <motion.div
         className="absolute inset-0 pointer-events-none"
         animate={{ rotate: -360 }}
@@ -197,7 +183,6 @@ const CodeIcon3D: React.FC = () => {
         </div>
       </motion.div>
       
-      {/* Tertiary orbit - Binary elements */}
       <motion.div
         className="absolute inset-0 pointer-events-none"
         animate={{ rotate: 360 }}
@@ -217,7 +202,6 @@ const CodeIcon3D: React.FC = () => {
         </div>
       </motion.div>
       
-      {/* Quaternary orbit - AI/ML symbols */}
       <motion.div
         className="absolute inset-0 pointer-events-none"
         animate={{ rotate: -360 }}
@@ -237,7 +221,6 @@ const CodeIcon3D: React.FC = () => {
         </div>
       </motion.div>
       
-      {/* Fast inner orbit - Simple dots */}
       <motion.div
         className="absolute inset-0 pointer-events-none"
         animate={{ rotate: 360 }}
@@ -263,7 +246,6 @@ const HeroSection: React.FC<{ id: string }> = ({ id }) => {
     contactSection?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Animation variants for the name
   const nameVariants = {
     hidden: { opacity: 0, y: 50, scale: 0.8 },
     visible: {
@@ -278,7 +260,6 @@ const HeroSection: React.FC<{ id: string }> = ({ id }) => {
     }
   };
 
-  // Animation for subtitle
   const subtitleVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
@@ -292,7 +273,6 @@ const HeroSection: React.FC<{ id: string }> = ({ id }) => {
     }
   };
 
-  // Animation for description
   const descriptionVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -310,16 +290,12 @@ const HeroSection: React.FC<{ id: string }> = ({ id }) => {
     <Section id={id} className="min-h-screen flex items-center justify-center relative !py-0">
       <FloatingParticlesBackground count={25} />
       <div className="z-10 relative max-w-6xl mx-auto px-4 w-full">
-        {/* Main Content Container - Flexbox Layout */}
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-16">
-          {/* Left Side - Enhanced 3D Development Icon */}
           <div className="flex-shrink-0">
             <CodeIcon3D />
           </div>
           
-          {/* Right Side - Text Content (Right-aligned) */}
           <div className="flex-1 text-center lg:text-right lg:pt-8">
-            {/* Main Name - Left aligned */}
             <motion.div
               variants={nameVariants}
               initial="hidden"
@@ -327,13 +303,11 @@ const HeroSection: React.FC<{ id: string }> = ({ id }) => {
               className="mb-6"
             >
               <h1 className="relative">
-                {/* Glow effect background */}
                 <div 
                   className="absolute inset-0 bg-gradient-to-r from-purple-500/30 via-violet-500/30 to-indigo-500/30 blur-2xl scale-110 -z-10"
                   aria-hidden="true"
                 />
                 
-                {/* Main text with reliable gradient */}
                 <span 
                   className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-purple-100 to-violet-200 bg-clip-text text-transparent font-display leading-tight"
                   style={{
@@ -345,7 +319,6 @@ const HeroSection: React.FC<{ id: string }> = ({ id }) => {
                   {USER_INFO.name}
                 </span>
                 
-                {/* Fallback text for compatibility */}
                 <span 
                   className="absolute inset-0 text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight font-display leading-tight opacity-0"
                   style={{ opacity: 'var(--text-fallback, 0)' }}
@@ -356,7 +329,6 @@ const HeroSection: React.FC<{ id: string }> = ({ id }) => {
               </h1>
             </motion.div>
             
-            {/* Subtitle */}
             <motion.p
   variants={typingContainer}
   initial="hidden"
@@ -370,7 +342,6 @@ const HeroSection: React.FC<{ id: string }> = ({ id }) => {
   ))}
 </motion.p>
             
-            {/* Description */}
             <motion.p
               variants={descriptionVariants}
               initial="hidden"
@@ -389,7 +360,6 @@ const HeroSection: React.FC<{ id: string }> = ({ id }) => {
   Welcome to my Portfolio 
 </motion.h2>
             
-            {/* Buttons */}
             <motion.div
               className="flex flex-col sm:flex-row justify-center lg:justify-end items-center gap-4"
               initial={{ opacity: 0, y: 20 }}

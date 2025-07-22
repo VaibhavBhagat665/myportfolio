@@ -128,7 +128,6 @@ const CertificationItem: React.FC<{ cert: Certification; index: number }> = ({ c
       animate="visible"
       className="relative perspective-1000"
     >
-      {/* Glow Effect Background */}
       <motion.div
         variants={glowVariants}
         initial="rest"
@@ -157,7 +156,6 @@ const CertificationItem: React.FC<{ cert: Certification; index: number }> = ({ c
             rgba(30, 41, 59, 0.95) 100%)`
         }}
       >
-        {/* Shimmer Effect */}
         <motion.div
           variants={shimmerVariants}
           initial="rest"
@@ -165,7 +163,6 @@ const CertificationItem: React.FC<{ cert: Certification; index: number }> = ({ c
           className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12"
         />
 
-        {/* Top Accent Line */}
         <motion.div 
           className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-accent-purple via-accent-teal to-indigo-500"
           initial={{ scaleX: 0 }}
@@ -173,7 +170,6 @@ const CertificationItem: React.FC<{ cert: Certification; index: number }> = ({ c
           transition={{ duration: 0.5, ease: "easeOut" }}
         />
 
-        {/* Verified Badge */}
         <motion.div
           variants={badgeVariants}
           initial="rest"
@@ -189,7 +185,6 @@ const CertificationItem: React.FC<{ cert: Certification; index: number }> = ({ c
         </motion.div>
 
         <div className="flex items-start space-x-4 relative z-10">
-          {/* Enhanced Logo/Icon Container */}
           <motion.div 
             variants={iconVariants}
             initial="rest"
@@ -201,7 +196,6 @@ const CertificationItem: React.FC<{ cert: Certification; index: number }> = ({ c
                            w-full h-full rounded-xl border border-accent-teal/30 backdrop-blur-sm
                            flex items-center justify-center overflow-hidden group/logo">
               
-              {/* Logo Image Placeholder */}
               {cert.logoUrl ? (
                 <img 
                   src={cert.logoUrl} 
@@ -218,11 +212,9 @@ const CertificationItem: React.FC<{ cert: Certification; index: number }> = ({ c
                 </div>
               )}
               
-              {/* Subtle Pattern Overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-xl" />
             </div>
             
-            {/* Floating Particles Animation */}
             <AnimatePresence>
               {isHovered && (
                 <>
@@ -253,7 +245,6 @@ const CertificationItem: React.FC<{ cert: Certification; index: number }> = ({ c
             </AnimatePresence>
           </motion.div>
 
-          {/* Enhanced Content */}
           <motion.div 
             variants={contentVariants}
             initial="rest"
@@ -291,7 +282,6 @@ const CertificationItem: React.FC<{ cert: Certification; index: number }> = ({ c
               </p>
             </motion.div>
 
-            {/* Enhanced Credential Link */}
             {cert.credentialUrl && (
               <motion.a
                 href={cert.credentialUrl}
@@ -319,7 +309,6 @@ const CertificationItem: React.FC<{ cert: Certification; index: number }> = ({ c
           </motion.div>
         </div>
 
-        {/* Bottom Gradient Line */}
         <motion.div 
           className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r 
                      from-transparent via-accent-teal/50 to-transparent"
@@ -328,7 +317,6 @@ const CertificationItem: React.FC<{ cert: Certification; index: number }> = ({ c
           transition={{ duration: 0.5, delay: 0.1 }}
         />
 
-        {/* Corner Decorations */}
         <div className="absolute top-0 right-0 w-20 h-20 opacity-5">
           <div className="absolute inset-0 bg-gradient-to-bl from-accent-teal to-transparent rounded-bl-full" />
         </div>

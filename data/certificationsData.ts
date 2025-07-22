@@ -1,13 +1,13 @@
 
 import { Certification } from '../types';
-import { UdemyIcon, CourseraIcon } from '../components/ui/Icons'; // Placeholders
+import { UdemyIcon, CourseraIcon } from '../components/ui/Icons'; 
 
 export const certificationsData: Certification[] = [
   {
     id: 'ml-a-z-udemy',
     name: 'Machine Learning A-Z™: AI, Python & R + ChatGPT Bonus',
     issuer: 'Udemy',
-    date: 'January 2025', // Or a completion date like '2024-03'
+    date: 'January 2025', 
     credentialUrl: 'https://www.udemy.com/certificate/UC-189be3bb-1e33-4874-8c89-430de5db2350/', 
     logoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7zmzguRUdNPxg-5ixP9ICiFXXiKx1gBAIKQ&s',
   },
@@ -40,7 +40,6 @@ export const certificationsData: Certification[] = [
     name: 'The Complete Web Development Bootcamp',
     issuer: 'Udemy',
     date: 'Ongoing',
-    // credentialUrl: '#', 
     logoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7zmzguRUdNPxg-5ixP9ICiFXXiKx1gBAIKQ&s',
   },
   

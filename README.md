@@ -1,14 +1,17 @@
-# Run and deploy your AI Studio app
+# 🚀 Personal Portfolio Website
 
-This contains everything you need to run your app locally.
+Hi there! 👋 Welcome to the source code of my personal portfolio website – a digital space where I showcase my work, skills, and a bit about who I am.
 
-## Run Locally
+🔗 **Live Site:** [your-website-link.com](https://your-website-link.com) ---
 
-**Prerequisites:**  Node.js
+## 🧰 Built With
+
+| Skill | Description |
+|---|---|
+| ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white) | Core app structure |
+| ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white) | Core app structure |
+| ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) | Layout and styling |
+| ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) | Layout and styling |
+| ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white) | Fast frontend build tool |
 
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
