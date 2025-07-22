@@ -262,10 +262,9 @@ Speak about Vaibhav as if you know him personally, not as if you're reading from
         `;
 
       chatSessionRef.current = ai.chats.create({
-        model: 'gemini-pro',
+        model: 'gemini-1.5-flash',
         config: { systemInstruction: context },
       });
-
 
       setMessages([
         {
