@@ -262,7 +262,7 @@ Speak about Vaibhav as if you know him personally, not as if you're reading from
         `;
 
       chatSessionRef.current = ai.chats.create({
-        model: 'gemini-pro-vision-lite',
+        model: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent',
         config: { systemInstruction: context },
       });
 
