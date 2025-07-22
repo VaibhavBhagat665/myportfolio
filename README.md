@@ -2,7 +2,7 @@
 
 Hi there! 👋 Welcome to the source code of my personal portfolio website – a digital space where I showcase my work, skills, and a bit about who I am.
 
-🔗 **Live Site:** [your-website-link.com](https://your-website-link.com) ---
+🔗 **Live Site:** [Portfolio](https://vaibhav-bhagat.vercel.app/) 
 
 ## 🧰 Built With
 
